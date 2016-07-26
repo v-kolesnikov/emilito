@@ -1,0 +1,10 @@
+---
+
+- name: install development tools
+  apt: name={{ item }} state=present
+  with_items:
+    - git
+    - htop
+    - httpie
+    - tmux
+  become: yes

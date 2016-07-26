@@ -1,0 +1,11 @@
+app_name: emilito
+
+ruby_version: '2.3.1'
+
+# ruby (rvm)
+rvm1_user: 'vagrant'
+rvm1_install_path: '/home/vagrant/.rvm'
+rvm1_install_flags: '--auto-dotfiles --user-install'
+rvm1_rvm_check_for_updates: false
+rvm1_rubies:
+  - 'ruby-{{ ruby_version }}'

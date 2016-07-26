@@ -1,0 +1,8 @@
+---
+
+- hosts: all
+  roles:
+    - dev-server
+    - nodejs
+    - postgresql
+    - { role: ruby, become: yes }
