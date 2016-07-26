@@ -1,5 +1,8 @@
-install:
-		bundle exec rake db:setup
-
 test:
-		bundle exec rake RAILS_ENV=test
+		bundle exec rake
+
+install:
+		bundle exec rails db:setup
+		bundle exec rails db:migrate
+
+.PHONY: test
