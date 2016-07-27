@@ -1,0 +1,32 @@
+description: Entity representing a <<resourcePathName|!singularize>>
+securedBy: [oauth_2_0]
+get:
+  description: |
+    Get the <<resourcePathName|!singularize>>
+    with id = {<<resourcePathName|!singularize>>\_id}
+  responses:
+    200:
+      body:
+        application/json:
+    404:
+      body:
+        application/json:
+put:
+  description: |
+    Update the <<resourcePathName|!singularize>>
+    with id = {<<resourcePathName|!singularize>>\_id}
+  responses:
+    204:
+    409:
+patch:
+  description: |
+    Patch the <<resourcePathName|!singularize>>
+    with id = {<<resourcePathName|!singularize>>\_id}
+  responses:
+    204:
+delete:
+  description: |
+    Delete the <<resourcePathName|!singularize>>
+    with id = {<<resourcePathName|!singularize>>\_id}
+  responses:
+    204:

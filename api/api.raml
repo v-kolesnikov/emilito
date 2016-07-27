@@ -1,0 +1,110 @@
+#%RAML 1.0
+title: Emilito Public
+version: v3
+baseUri: http://api.emilito.io
+
+documentation:
+ - title: Overview
+   content: !include documentation/01_overview.md
+
+ - title: Authorization
+   content: !include documentation/02_authentication.md
+
+protocols: [ HTTP, HTTPS ]
+
+mediaType:
+  - application/json
+
+securitySchemes:
+  oauth_2_0: !include securitySchemes/oauth_2_0.raml
+
+types:
+  Ticket:
+    type: object
+    properties:
+      id: number
+      title: string
+      views_count: number
+      created_at: datetime-only
+      published_at: datetime-only
+      author:
+        type: User
+      workspace:
+        type: Workspace
+  User:
+    type: object
+    properties:
+      id: number
+      full_name: string
+      position: string
+  Workspace:
+    type: object
+    properties:
+      id: number
+      title: string
+
+resourceTypes:
+  collection: !include resourceTypes/collection.raml
+  collection_item: !include resourceTypes/collection_item.raml
+
+traits:
+  pageable: !include ./traits/pageable.raml
+
+/workspaces:
+  type: collection
+  is:  [pageable]
+
+  /{workspace_id}:
+    type: collection_item
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Workspace
+
+/tickets:
+  type: collection
+  is: [pageable]
+  get:
+    queryParameters:
+      author_id:
+        required: false
+        type: number
+        description: Filter by author
+      workspace_id:
+        required: false
+        type: number
+        description: Filter by workspace
+      published_after:
+        required: false
+        type: datetime-only
+        description: Filter by published
+      published_before:
+        required: false
+        type: datetime-only
+        description: Filter by published
+  /{ticket_id}:
+    type: collection_item
+    uriParameters:
+      ticket_id:
+        type: number
+        description: Ticket id
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: Ticket
+
+/users:
+  type: collection
+  is: [pageable]
+  /{user_id}:
+    type: collection_item
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: User

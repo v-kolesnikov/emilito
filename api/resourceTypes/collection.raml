@@ -1,0 +1,14 @@
+description: Collection of available <<resourcePathName>> in Workflow
+securedBy: [oauth_2_0]
+get:
+  description: Get a list of <<resourcePathName>>
+  responses:
+    200:
+      body:
+        application/json:
+post:
+  description: Add a new <<resourcePathName|!singularize>> to Workflow
+  responses:
+    201:
+      body:
+        application/json:
