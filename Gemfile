@@ -9,6 +9,8 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
+gem 'bcrypt'
+
 # ===== Frontend =====
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -24,6 +26,12 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+
+# ===== Web architecture =====
+gem 'trailblazer'
+gem 'trailblazer-rails'
+gem 'reform'
+gem 'dry-validation'
 
 group :development, :test do
   gem 'pry-byebug', platform: :mri
