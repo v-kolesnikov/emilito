@@ -1,9 +1,7 @@
 class Workspace
-  class Create < Trailblazer::Operation
+  class Show < Trailblazer::Operation
     include Model
-    model Workspace, :create
-
-    contract Workspace::Contract::Base
+    model Workspace, :find
 
     extend  Trailblazer::Operation::Representer::DSL
     include Trailblazer::Operation::Representer::Rendering
@@ -11,10 +9,7 @@ class Workspace
 
     representer Representer::Show
 
-    def process(params)
-      validate(params) do
-        contract.save
-      end
+    def process(*)
     end
   end
 end

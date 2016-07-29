@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :workspace do
     account
-    title Faker::Lorem.word
+    title { Faker::Lorem.word }
   end
 end

@@ -2,9 +2,9 @@ require 'rails_helper'
 require 'support/account_context'
 
 describe Workspace::Create do
-  include_context 'account_context'
-
   describe '.run' do
+    include_context 'account_context'
+
     let(:workspace_params) do
       attributes_for(:workspace).merge(account_id: account.id)
     end

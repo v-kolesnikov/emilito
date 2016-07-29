@@ -28,10 +28,12 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 # ===== Web architecture =====
+gem 'dry-validation'
 gem 'trailblazer'
 gem 'trailblazer-rails'
 gem 'reform'
-gem 'dry-validation'
+gem 'representable'
+gem 'responders'
 
 group :development, :test do
   gem 'pry-byebug', platform: :mri

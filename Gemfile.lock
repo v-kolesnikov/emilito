@@ -178,6 +178,8 @@ GEM
     representable (3.0.0)
       declarative (~> 0.0.5)
       uber (~> 0.0.15)
+    responders (2.2.0)
+      railties (>= 4.2.0, < 5.1)
     rspec (3.5.0)
       rspec-core (~> 3.5.0)
       rspec-expectations (~> 3.5.0)
@@ -270,6 +272,8 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.0)
   reform
+  representable
+  responders
   rspec
   rspec-rails
   sass-rails (~> 5.0)
