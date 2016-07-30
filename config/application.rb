@@ -17,5 +17,7 @@ module Emilito
       g.assets false
       g.view_specs false
     end
+
+    config.exceptions_app = routes
   end
 end

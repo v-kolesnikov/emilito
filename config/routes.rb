@@ -8,4 +8,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  get '404', to: 'api/errors#not_found'
+  get '406', to: 'api/errors#not_acceptable'
+  get '500', to: 'api/errors#internal_server_error'
 end
