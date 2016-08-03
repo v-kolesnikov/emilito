@@ -1,7 +1,14 @@
-require 'workspace/operation/show'
-
 class Workspace
-  class Delete < Workspace::Show
+  class Delete < Trailblazer::Operation
+    include Trailblazer::Operation::Responder
+
+    include Model
+    model Workspace, :find
+
+    contract do
+      property :id
+    end
+
     def process(params)
       validate(params) do
         model.destroy
