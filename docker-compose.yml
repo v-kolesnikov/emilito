@@ -1,0 +1,39 @@
+version: "2"
+
+services:
+  db:
+    image: postgres:9.5
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres:/var/lib/postgresql/data
+
+  redis:
+    image: redis:3.2-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis:/var/lib/redis/data
+
+  web:
+    build: .
+    command: bundle exec rails s -b "0.0.0.0" -p 3000
+    environment:
+      - EMILITO_DATABASE_HOST=db
+    volumes:
+      - .:/emilito
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+      - redis
+
+  data:
+    image: ubuntu:16.04
+    volumes:
+      - postgres:/volumes/postgresql/data
+      - redis:/volumes/redis/data
+
+volumes:
+  postgres:
+  redis:

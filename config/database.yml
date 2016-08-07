@@ -16,6 +16,7 @@
 #
 default: &default
   adapter: postgresql
+  host: <%= ENV.fetch("EMILITO_DATABASE_HOST") { "localhost" } %>
   encoding: unicode
   username: postgres
   # For details on connection pooling, see rails configuration guide
