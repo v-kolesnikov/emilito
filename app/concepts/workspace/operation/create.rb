@@ -9,7 +9,7 @@ class Workspace
     include Trailblazer::Operation::Representer::Rendering
     include Trailblazer::Operation::Responder
 
-    representer Representer::Show
+    representer Workspace::Representer::Show
 
     def process(params)
       validate(params) do
