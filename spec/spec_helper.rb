@@ -17,6 +17,11 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
+if ENV['CODECLIMATE_REPO_TOKEN']
+  require "codeclimate-test-reporter"
+  CodeClimate::TestReporter.start
+end
+
 require 'faker'
 require 'factory_girl'
 
