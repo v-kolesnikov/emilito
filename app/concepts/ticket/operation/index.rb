@@ -11,8 +11,10 @@ class Ticket
     def model!(params)
       limit  = params[:limit] || 10
       page   = params[:page]  || 1
-      Ticket.where(workspace_id: params[:workspace_id])
-            .limit(limit).offset(limit * (page.to_i - 1))
+      offset = limit * (page.to_i - 1)
+
+      workspace = Workspace.find(params[:workspace_id])
+      workspace.tickets.limit(limit).offset(offset)
     end
 
     def process(*)
