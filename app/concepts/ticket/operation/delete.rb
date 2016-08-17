@@ -1,7 +1,10 @@
-require 'ticket/operation/show'
-
 class Ticket
-  class Delete < Ticket::Show
+  class Delete < Trailblazer::Operation
+    include Model
+    model Ticket, :find
+
+    include Trailblazer::Operation::Responder
+
     def process(params)
       validate(params) do
         model.destroy
