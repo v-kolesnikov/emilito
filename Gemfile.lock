@@ -270,6 +270,7 @@ DEPENDENCIES
   database_cleaner
   doorkeeper
   dotenv-rails
+  dry-types
   dry-validation
   factory_girl_rails
   faker
