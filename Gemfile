@@ -31,6 +31,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
 # ===== Web architecture =====
+gem 'doorkeeper'
 gem 'dry-validation'
 gem 'trailblazer'
 gem 'trailblazer-rails'
