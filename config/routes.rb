@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v3 do
       resources :workspaces do
-        resources :tickets
+        resources :tickets, except: [:new, :edit]
         resources :users
       end
     end
