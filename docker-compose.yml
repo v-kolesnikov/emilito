@@ -16,6 +16,8 @@ services:
       - redis:/var/lib/redis/data
 
   web:
+    tty: true
+    stdin_open: true
     build: .
     command: bundle exec rails s -b "0.0.0.0" -p 3000
     environment:
