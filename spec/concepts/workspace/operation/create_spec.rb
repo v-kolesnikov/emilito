@@ -10,7 +10,7 @@ describe Workspace::Create do
     end
 
     it 'create a new Workspace' do
-      res, op = described_class.run(workspace_params)
+      res, op = described_class.run(workspace: workspace_params)
       expect(res).to be true
       expect(op.model).to be_kind_of Workspace
       expect(op.model.persisted?).to be true

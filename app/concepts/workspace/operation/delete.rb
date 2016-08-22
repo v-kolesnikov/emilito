@@ -10,9 +10,7 @@ class Workspace
     end
 
     def process(params)
-      validate(params) do
-        model.destroy
-      end
+      model.destroy
     end
   end
 end

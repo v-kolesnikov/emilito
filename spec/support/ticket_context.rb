@@ -9,6 +9,6 @@ RSpec.shared_context 'ticket_context' do
         account_id: account.id,
         workspace_id: workspace.id
       )
-    Ticket::Create.(ticket_params).model
+    Ticket::Create.(ticket: ticket_params).model
   end
 end

@@ -12,7 +12,7 @@ class Workspace
     representer Workspace::Representer::Show
 
     def process(params)
-      validate(params) do
+      validate(params[:workspace]) do
         contract.save
       end
     end
