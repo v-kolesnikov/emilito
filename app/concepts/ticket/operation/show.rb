@@ -9,7 +9,7 @@ class Ticket
 
     representer Ticket::Representer::Show
 
-    def process(*)
+    def process(_params)
     end
   end
 end

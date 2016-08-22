@@ -9,7 +9,7 @@ class Workspace
 
     representer Representer::Show
 
-    def process(*)
+    def process(_params)
     end
   end
 end

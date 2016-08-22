@@ -14,7 +14,7 @@ class Workspace
       Workspace.limit(limit).offset(limit * (page.to_i - 1))
     end
 
-    def process(*)
+    def process(_params)
     end
   end
 end
