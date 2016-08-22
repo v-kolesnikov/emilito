@@ -13,7 +13,7 @@ describe Ticket::Create do
     end
 
     it 'create a new Ticket' do
-      res, op = described_class.run(ticket_params)
+      res, op = described_class.run(ticket: ticket_params)
       expect(res).to be true
       expect(op.model).to be_kind_of Ticket
       expect(op.model.persisted?).to be true

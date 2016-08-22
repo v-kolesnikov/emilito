@@ -16,7 +16,7 @@ class Account
     end
 
     def process(params)
-      validate(params) do
+      validate(params[:account]) do
         contract.save
       end
     end

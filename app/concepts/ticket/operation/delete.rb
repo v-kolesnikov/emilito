@@ -6,9 +6,7 @@ class Ticket
     include Trailblazer::Operation::Responder
 
     def process(params)
-      validate(params) do
-        model.destroy
-      end
+      model.destroy
     end
   end
 end

@@ -12,7 +12,7 @@ class Ticket
     representer Ticket::Representer::Show
 
     def process(params)
-      validate(params) do
+      validate(params[:ticket]) do
         contract.save
       end
     end
