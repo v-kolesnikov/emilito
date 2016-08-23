@@ -9,7 +9,7 @@ class Workspace
       property :id
     end
 
-    def process(params)
+    def process(_params)
       model.destroy
     end
   end

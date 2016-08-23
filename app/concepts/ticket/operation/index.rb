@@ -17,7 +17,7 @@ class Ticket
       workspace.tickets.limit(limit).offset(offset)
     end
 
-    def process(*)
+    def process(_params)
     end
   end
 end
