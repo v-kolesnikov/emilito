@@ -39,6 +39,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (7.1.1)
+    awesome_print (1.7.0)
     bcrypt (3.1.11)
     builder (3.2.2)
     byebug (9.0.5)
@@ -78,7 +79,8 @@ GEM
     dry-logic (0.3.0)
       dry-container (~> 0.2, >= 0.2.6)
       dry-equalizer (~> 0.2)
-    dry-monads (0.0.2)
+    dry-monads (0.1.0)
+      dry-equalizer
     dry-types (0.8.1)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
@@ -249,7 +251,7 @@ GEM
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uber (0.0.15)
-    uglifier (3.0.1)
+    uglifier (3.0.2)
       execjs (>= 0.3.0, < 3)
     web-console (3.3.1)
       actionview (>= 5.0)
@@ -264,6 +266,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   bcrypt
   codeclimate-test-reporter
   coffee-rails (~> 4.2)
