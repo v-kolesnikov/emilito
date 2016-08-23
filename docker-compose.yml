@@ -24,18 +24,14 @@ services:
       - EMILITO_DATABASE_HOST=db
     volumes:
       - .:/emilito
+      - bundle:/bundle
     ports:
       - "3000:3000"
     depends_on:
       - db
       - redis
 
-  data:
-    image: ubuntu:16.04
-    volumes:
-      - postgres:/volumes/postgresql/data
-      - redis:/volumes/redis/data
-
 volumes:
+  bundle:
   postgres:
   redis:
