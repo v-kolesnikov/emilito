@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt'
 
 group :development, :test do
+  gem 'awesome_print', require: 'ap'
   gem 'pry-byebug', platform: :mri
 end
 
