@@ -1,5 +1,3 @@
-require 'support/matchers/be_success'
-
 shared_examples 'create operation' do |concept|
   it "create a new #{concept}" do
     _, op = described_class.run(params)
