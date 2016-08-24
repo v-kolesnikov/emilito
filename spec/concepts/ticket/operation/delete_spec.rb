@@ -1,14 +1,11 @@
 require 'rails_helper'
 require 'support/ticket_context'
+require 'support/shared_examples/operation'
 
 describe Ticket::Delete do
   describe '.run' do
     include_context 'ticket_context'
-
-    it 'delete a exist Ticket' do
-      res, op = described_class.run(id: ticket.id)
-      expect(res).to be true
-      expect(op.model.destroyed?).to be true
-    end
+    let(:params) { { id: ticket.id } }
+    include_examples 'delete operation', Ticket
   end
 end
