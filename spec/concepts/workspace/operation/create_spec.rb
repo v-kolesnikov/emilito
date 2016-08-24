@@ -1,5 +1,6 @@
 require 'rails_helper'
 require 'support/account_context'
+require 'support/shared_examples/operation'
 
 describe Workspace::Create do
   describe '.run' do

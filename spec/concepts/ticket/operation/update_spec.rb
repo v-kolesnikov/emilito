@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'support/ticket_context'
-require 'support/matchers/be_success'
 
 describe Ticket::Update do
   describe '.run' do
