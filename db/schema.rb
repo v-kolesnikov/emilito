@@ -16,11 +16,8 @@ ActiveRecord::Schema.define(version: 20160816183457) do
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["email"], name: "index_accounts_on_email", unique: true, using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
@@ -64,14 +61,14 @@ ActiveRecord::Schema.define(version: 20160816183457) do
   create_table "tickets", force: :cascade do |t|
     t.string   "title"
     t.integer  "workspace_id"
-    t.integer  "account_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["account_id"], name: "index_tickets_on_account_id", using: :btree
     t.index ["workspace_id"], name: "index_tickets_on_workspace_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
+    t.string   "login"
+    t.string   "name"
     t.string   "email"
     t.string   "password_digest"
     t.integer  "account_id"
@@ -79,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160816183457) do
     t.datetime "updated_at",      null: false
     t.index ["account_id"], name: "index_users_on_account_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["login"], name: "index_users_on_login", unique: true, using: :btree
   end
 
   create_table "workspaces", force: :cascade do |t|
@@ -91,7 +89,6 @@ ActiveRecord::Schema.define(version: 20160816183457) do
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
-  add_foreign_key "tickets", "accounts"
   add_foreign_key "tickets", "workspaces"
   add_foreign_key "users", "accounts"
   add_foreign_key "workspaces", "accounts"
