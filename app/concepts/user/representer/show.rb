@@ -1,6 +1,6 @@
 require 'representable/json'
 
-class Account
+class User
   module Representer
     class Show < Representable::Decorator
       include Representable::Hash
@@ -8,7 +8,10 @@ class Account
       include Representable::JSON
 
       property :id
-      property :user, decorator: User::Representer::Show
+      property :name
+      property :email
+      property :created_at
+      property :updated_at
     end
   end
 end

@@ -9,7 +9,6 @@ class Ticket
 
       property :id
       property :title
-      property :account_id
       property :workspace_id
       property :created_at
       property :updated_at

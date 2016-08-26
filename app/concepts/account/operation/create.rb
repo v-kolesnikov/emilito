@@ -1,19 +1,10 @@
-require 'reform/form/dry'
-
 class Account
   class Create < Trailblazer::Operation
     include Model
 
     model Account, :create
 
-    contract Account::Contract::Base do
-      feature Reform::Form::Dry
-
-      validation do
-        required(:email).filled(:str?)
-        required(:password).filled(:str?)
-      end
-    end
+    contract Account::Contract::Create
 
     def process(params)
       validate(params[:account]) do
