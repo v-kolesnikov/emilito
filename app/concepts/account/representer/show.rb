@@ -8,7 +8,7 @@ class Account
       include Representable::JSON
 
       property :id
-      property :email
+      property :user, decorator: User::Representer::Show
     end
   end
 end
