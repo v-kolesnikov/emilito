@@ -8,7 +8,7 @@ class User
 
     representer User::Representer::Index
 
-    def model!(params)
+    def model!(_params)
       User.limit(100)
     end
 
