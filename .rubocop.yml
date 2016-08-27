@@ -1,6 +1,26 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  UseCache: false
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  ExtraDetails: true
+  TargetRubyVersion: 2.0
+
+  Exclude:
+    - "vendor/**/*"
+    - "db/schema.rb"
+    - "config/initializers/doorkeeper.rb"
+    - "db/migrate/20160816183457_create_doorkeeper_tables.rb"
+
+Rails:
+  Enabled: true
+
 Style/Documentation:
   Enabled: false
+
 Style/FrozenStringLiteralComment:
   Enabled: false
+
 Style/LambdaCall:
   Enabled: false
