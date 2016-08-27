@@ -22,6 +22,7 @@ RSpec::Matchers.define :be_fail_with_keys do |expected|
   end
 
   failure_message do |actual|
-    "#{actual.contract.errors.messages} not be include errors with keys #{expected}"
+    messages = actual.contract.errors.messages
+    "#{messages} not be include errors with keys #{expected}"
   end
 end
