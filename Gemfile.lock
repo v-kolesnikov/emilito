@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.0.0.1)
       actionpack (= 5.0.0.1)
@@ -40,8 +41,13 @@ GEM
       tzinfo (~> 1.1)
     arel (7.1.1)
     ast (2.3.0)
+    autoprefixer-rails (6.4.0.3)
+      execjs
     awesome_print (1.7.0)
     bcrypt (3.1.11)
+    bootstrap (4.0.0.alpha3.1)
+      autoprefixer-rails (>= 6.0.3)
+      sass (>= 3.4.19)
     builder (3.2.2)
     byebug (9.0.5)
     codeclimate-test-reporter (0.6.0)
@@ -167,6 +173,7 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.0.0.1)
       sprockets-rails (>= 2.0.0)
+    rails-assets-tether (1.3.4)
     rails-dom-testing (2.0.1)
       activesupport (>= 4.2.0, < 6.0)
       nokogiri (~> 1.6.0)
@@ -288,6 +295,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bcrypt
+  bootstrap (~> 4.0.0.alpha3.1)
   codeclimate-test-reporter
   coffee-rails (~> 4.2)
   database_cleaner
@@ -304,6 +312,7 @@ DEPENDENCIES
   pry-byebug
   puma (~> 3.0)
   rails (~> 5.0.0)
+  rails-assets-tether (>= 1.1.0)!
   reform
   representable
   responders
