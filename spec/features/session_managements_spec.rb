@@ -18,9 +18,11 @@ RSpec.feature 'SessionManagements', type: :feature do
     scenario 'redirect to /dashboard after sign in' do
       visit '/sign_in'
 
-      fill_in :session_email, with: email
-      fill_in :session_password, with: password
-      click_on I18n.t(:sign_in)
+      within('form#new_session') do
+        fill_in :session_email, with: email
+        fill_in :session_password, with: password
+        click_on I18n.t(:sign_in)
+      end
 
       expect(page).to have_current_path(dashboard_path)
     end
