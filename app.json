@@ -1,6 +1,7 @@
 {
   "name": "emilito",
   "scripts": {
+    "postdeploy": "rails db:migrate"
   },
   "env": {
     "LANG": {
@@ -20,7 +21,11 @@
     },
     "SECRET_KEY_BASE": {
       "required": true
-    }
+    },
+    "EMILITO_ROLLBAR_ACCESS_TOKEN": {
+      "required": true
+    },
+    "ROLLBAR_ENV": "HEROKU_REVIEW_APP"
   },
   "formation": {
     "worker": {
