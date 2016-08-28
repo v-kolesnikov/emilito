@@ -13,9 +13,5 @@
  */
 
 @import "bootstrap";
+@import "web/application";
 @import "web/sessions/new";
-
-#container {
-  margin: 48px auto;
-  width: 960px;
-}
