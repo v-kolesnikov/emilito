@@ -1,0 +1,7 @@
+en:
+  errors:
+    password_ok?: "Incorrect email or password"
+
+ru:
+  errors:
+    password_ok?: "Неверный email или пароль"

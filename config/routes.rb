@@ -12,6 +12,16 @@ Rails.application.routes.draw do
     end
   end
 
+  scope module: :web do
+    get  '/sign_in',  to: 'sessions#new'
+    post '/sign_in',  to: 'sessions#create'
+    post '/sign_out', to: 'sessions#destroy'
+
+    scope module: :accounts do
+      get '/dashboard', to: 'dashboard#show'
+    end
+  end
+
   get '404', to: 'api/errors#not_found'
   get '406', to: 'api/errors#not_acceptable'
   get '500', to: 'api/errors#internal_server_error'
