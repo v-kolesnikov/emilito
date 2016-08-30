@@ -10,7 +10,7 @@ class User
 
       validation do
         required(:email).filled(:str?)
-        required(:password).filled(min_size?: 6).confirmation
+        required(:password).filled(:str?)
       end
     end
   end

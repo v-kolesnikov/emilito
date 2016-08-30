@@ -5,11 +5,7 @@ RSpec.shared_context 'user_context' do
   let(:password) { Faker::Internet.password }
 
   let!(:current_user) do
-    user_params = {
-      email: email,
-      password: password,
-      password_confirmation: password
-    }
-    Account::Create.(account: { user: user_params }).model.owner
+    user_params = { email: email, password: password }
+    User::Create.(user: user_params).model
   end
 end
