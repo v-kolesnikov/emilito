@@ -5,12 +5,14 @@ AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
   ExtraDetails: true
-  TargetRubyVersion: 2.0
+  TargetRubyVersion: 2.3
 
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
     - "config/initializers/doorkeeper.rb"
+    - "config/initializers/simple_form.rb"
+    - "config/initializers/simple_form_bootstrap.rb"
     - "db/migrate/20160816183457_create_doorkeeper_tables.rb"
 
 Rails:

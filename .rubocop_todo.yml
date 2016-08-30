@@ -26,36 +26,12 @@ Style/EmptyLines:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
-Style/ExtraSpacing:
-  Exclude:
-    - 'config/application.rb'
-    - 'db/migrate/20160816183457_create_doorkeeper_tables.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, SupportedStyles, UseHashRocketsWithSymbolValues, PreferHashRocketsForNonAlnumEndingSymbols.
-# SupportedStyles: ruby19, ruby19_no_mixed_keys, hash_rockets
-Style/HashSyntax:
-  Exclude:
-    - 'config/application.rb'
-
 # Offense count: 1
 # Cop supports --auto-correct.
 # Configuration parameters: MaxLineLength.
 Style/IfUnlessModifier:
   Exclude:
     - 'config/initializers/rollbar.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment.
-Style/SpaceBeforeFirstArg:
-  Exclude:
-    - 'config/application.rb'
-    - 'db/migrate/20160816183457_create_doorkeeper_tables.rb'
 
 # Offense count: 2
 # Cop supports --auto-correct.
