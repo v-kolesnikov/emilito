@@ -27,5 +27,11 @@ module Web
       end
     end
     include SessionMixin
+
+    protected
+
+    def logged_in_behavior!
+      redirect_to dashboard_path if logged_in?
+    end
   end
 end

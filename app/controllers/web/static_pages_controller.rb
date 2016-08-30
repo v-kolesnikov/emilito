@@ -2,6 +2,7 @@ module Web
   class StaticPagesController < Web::ApplicationController
     # GET /
     def index
+      form User::SignUp
     end
 
     # GET /personal

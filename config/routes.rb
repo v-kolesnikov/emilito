@@ -19,6 +19,11 @@ Rails.application.routes.draw do
       delete '/sign_out', action: :destroy
     end
 
+    scope controller: :sign_up do
+      get  '/sign_up', action: :new
+      post '/sign_up', action: :create
+    end
+
     scope controller: :static_pages do
       get :personal
       get :open_source
