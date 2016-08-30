@@ -1,5 +1,3 @@
-require 'reform/form/dry'
-
 Session = Struct.new(:email, :password)
 
 class Session

@@ -1,5 +1,3 @@
-require 'reform/form/dry'
-
 class Workspace
   module Contract
     class Create < Base

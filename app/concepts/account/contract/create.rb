@@ -1,5 +1,3 @@
-require 'reform/form/dry'
-
 class Account
   module Contract
     class Create < Base

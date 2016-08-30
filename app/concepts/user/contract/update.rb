@@ -1,5 +1,3 @@
-require 'reform/form/dry'
-
 class User
   module Contract
     class Update < Base

@@ -1,5 +1,3 @@
-require 'reform/form/dry'
-
 class Ticket
   module Contract
     class Base < Reform::Form
