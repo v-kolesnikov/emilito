@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   use_doorkeeper
 
-  root 'rails/welcome#index'
+  root 'web/static_pages#index'
 
   namespace :api do
     namespace :v3 do
@@ -16,6 +16,16 @@ Rails.application.routes.draw do
     get  '/sign_in',  to: 'sessions#new'
     post '/sign_in',  to: 'sessions#create'
     post '/sign_out', to: 'sessions#destroy'
+
+    scope controller: :static_pages do
+      get :personal
+      get :open_source
+      get :business
+      get :explore
+      get :pricing
+      get :blog
+      get :support
+    end
 
     scope module: :accounts do
       get '/dashboard', to: 'dashboard#show'

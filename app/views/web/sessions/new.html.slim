@@ -1,4 +1,4 @@
 = simple_form_for @form, as: :session, url: sign_in_path do |f|
   = f.input :email, required: false, placeholder: t(:username_or_email)
   = f.input :password, required: false, placeholder: t(:password)
-  = f.button :submit, t(:sign_in), class: "btn btn-success"
+  = f.button :submit, t(:sign_in), class: "btn btn-outline-success"
