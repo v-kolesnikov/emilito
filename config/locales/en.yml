@@ -23,5 +23,6 @@ en:
   hello_world: "Hello world"
   sign_in: "Sign In"
   sign_up: "Sign Up"
+  sign_out: "Sign out"
   username_or_email: "Username or email address"
   password: "Password"

@@ -13,9 +13,11 @@ Rails.application.routes.draw do
   end
 
   scope module: :web do
-    get  '/sign_in',  to: 'sessions#new'
-    post '/sign_in',  to: 'sessions#create'
-    post '/sign_out', to: 'sessions#destroy'
+    scope controller: :sessions do
+      get    '/sign_in',  action: :new
+      post   '/sign_in',  action: :create
+      delete '/sign_out', action: :destroy
+    end
 
     scope controller: :static_pages do
       get :personal
