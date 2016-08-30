@@ -1,5 +1,7 @@
 class User
   module Contract
+    # Private API
+    # See User::Contract::SignUp
     class Create < Base
       feature Reform::Form::Dry
 
