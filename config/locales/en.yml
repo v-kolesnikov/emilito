@@ -21,8 +21,15 @@
 
 en:
   hello_world: "Hello world"
-  sign_in: "Sign In"
-  sign_up: "Sign Up"
+  sign_in: "Sign in"
+  sign_up: "Sign up"
   sign_out: "Sign out"
   username_or_email: "Username or email address"
   password: "Password"
+
+  web:
+    sign_up:
+      sign_up_form:
+        pick_a_username: "Pick a username"
+        your_email_address: "Your email address"
+        create_a_password: "Create a password"

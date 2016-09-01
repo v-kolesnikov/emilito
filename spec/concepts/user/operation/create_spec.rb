@@ -19,16 +19,6 @@ describe User::Create do
         let(:params) { { user: { email: 'foo@bar.io' } } }
         it { expect(subject).to be_fail_with_key :password }
       end
-
-      context 'option password has a length of less than 6 symbols' do
-        let(:params) { { user: { email: 'foo@bar.io', password: '12345' } } }
-        it { expect(subject).to be_fail_with_key :password }
-      end
-
-      context 'option password_confirmation not passed' do
-        let(:params) { { user: { email: 'foo@bar', password: '123456' } } }
-        it { expect(subject).to be_fail_with_key :password_confirmation }
-      end
     end
   end
 end

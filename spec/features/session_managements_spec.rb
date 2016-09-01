@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/user_context'
 require 'support/shared_contexts/user_signed_in'
-require 'support/shared_examples/user_not_signed_in'
+require 'support/shared_examples/not_logged_user'
 
 RSpec.feature 'Feature::SessionManagement', type: :feature do
   context 'when user not signed in' do
@@ -33,6 +33,6 @@ RSpec.feature 'Feature::SessionManagement', type: :feature do
   context 'when signed user click to Sign out' do
     include_context 'user signed in'
     before { click_on I18n.t(:sign_out) }
-    it_behaves_like 'user not signed in'
+    it_behaves_like 'not logged user'
   end
 end
