@@ -2,29 +2,10 @@ doctype html
 html
   = render 'layouts/web/head'
   body
-    section#container
-      nav.navbar-full.navbar-light.bg-faded
-        a.navbar-brand href=root_path
-          / TODO: Add brand image
-          img src=""
-        ul.nav.navbar-nav
-          li.nav-item
-            a.nav-link href=personal_path = t(:personal)
-          li.nav-item
-            a.nav-link href=open_source_path = t(:open_source)
-          li.nav-item
-            a.nav-link href=business_path = t(:business)
-          li.nav-item
-            a.nav-link href=explore_path = t(:explore)
-        ul.nav.navbar-nav.pull-xs-right
-          li.nav-item
-            a.nav-link href=pricing_path = t(:pricing)
-          li.nav-item
-            a.nav-link href=blog_path = t(:blog)
-          li.nav-item
-            a.nav-link href=support_path = t(:'.support')
-          li.nav-item
-            a.btn.btn-secondary href=sign_in_path = t(:sign_in)
-          li.nav-item
-            a.btn.btn-success href=sign_up_path = t(:sign_up)
-      = yield
+    section.container#container
+      header.container
+        = render 'layouts/web/header'
+      main.container
+        = yield
+      footer.container
+        = render 'layouts/web/footer'

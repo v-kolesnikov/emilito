@@ -2,9 +2,10 @@ doctype html
 html
   = render 'layouts/web/head'
   body
-    section#container
-      nav.navbar-full.navbar-light.bg-faded
-        ul.nav.navbar-nav.pull-xs-right
-          li.nav-item
-            a.nav-link= link_to t(:'sign_out'), sign_out_path, method: :delete
-      = yield
+    section.container#container
+      header.container
+        = render 'layouts/web/accounts/header'
+      main.container
+        = yield
+      footer.container
+        = render 'layouts/web/footer'
