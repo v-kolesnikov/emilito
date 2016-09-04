@@ -21,11 +21,12 @@
 
 en:
   hello_world: "Hello world"
+  password: "Password"
   sign_in: "Sign in"
   sign_up: "Sign up"
   sign_out: "Sign out"
   username_or_email: "Username or email address"
-  password: "Password"
+  your_dashboard: "Your dashboard"
 
   web:
     sign_up:

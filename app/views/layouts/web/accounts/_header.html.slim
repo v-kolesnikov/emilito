@@ -1,0 +1,13 @@
+nav.navbar-full.navbar-light.bg-faded
+  ul.nav.navbar-nav.pull-xs-right
+    li.nav-item
+      .dropdown
+        button#dropdownMenuButton.btn.btn-secondary.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" type="button"
+         = current_user.email
+        .dropdown-menu aria-labelledby="dropdownMenuButton"
+          a.dropdown-item href="#" = t(:your_profile)
+          a.dropdown-item href="#" = t(:your_settings)
+          a.dropdown-item href=explore_path = t(:explore)
+          a.dropdown-item href="#" = t(:help)
+          .dropdown-divider
+          = link_to t(:sign_out), sign_out_path, method: :delete, class: 'dropdown-item'
