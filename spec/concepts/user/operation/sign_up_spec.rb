@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'support/shared_examples/operation'
-require 'support/user_context'
+require 'support/shared_contexts/user_context'
 
 describe User::SignUp do
   describe '.run' do
@@ -58,7 +58,7 @@ describe User::SignUp do
     end
 
     context 'when passed email already exists' do
-      include_context 'user_context' do
+      include_context 'user context' do
         let(:email) { 'me@tulio.mx' }
         let(:password) { '123456' }
       end

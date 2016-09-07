@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'support/user_context'
+require 'support/shared_contexts/user_context'
 
 RSpec.shared_context 'user signed in' do
-  include_context 'user_context'
+  include_context 'user context'
   before do
     visit sign_in_path
 

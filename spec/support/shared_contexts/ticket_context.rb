@@ -1,8 +1,8 @@
 require 'rails_helper'
-require 'support/workspace_context'
+require 'support/shared_contexts/workspace_context'
 
-RSpec.shared_context 'ticket_context' do
-  include_context 'workspace_context'
+RSpec.shared_context 'ticket context' do
+  include_context 'workspace context'
   let!(:ticket) do
     ticket_params =
       attributes_for(:ticket).merge(

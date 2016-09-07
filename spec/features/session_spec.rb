@@ -1,9 +1,9 @@
 require 'rails_helper'
-require 'support/user_context'
+require 'support/shared_contexts/user_context'
 require 'support/shared_contexts/user_signed_in'
 require 'support/shared_examples/not_logged_user'
 
-RSpec.feature 'Feature::SessionManagement', type: :feature do
+RSpec.feature 'Feature::Session', type: :feature do
   context 'when user not signed in' do
     scenario '/dashboard redirect to login page' do
       visit '/dashboard'
@@ -12,7 +12,7 @@ RSpec.feature 'Feature::SessionManagement', type: :feature do
   end
 
   context 'when registered user sign in' do
-    include_context 'user_context' do
+    include_context 'user context' do
       let(:email) { 'foo@bar.com' }
       let(:password) { '12345678' }
     end
