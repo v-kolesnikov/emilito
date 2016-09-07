@@ -30,6 +30,20 @@ RSpec.feature 'Feature::Session', type: :feature do
     end
   end
 
+  context 'when the user fills out the form is not valid' do
+    before do
+      visit '/sign_in'
+
+      within('form#new_session') do
+        fill_in :session_email, with: 'foo@bar.com'
+        fill_in :session_password, with: '12345678'
+        click_on I18n.t(:sign_in)
+      end
+    end
+
+    it_behaves_like 'not logged user'
+  end
+
   context 'when signed user click to Sign out' do
     include_context 'user signed in'
     before { click_on I18n.t(:sign_out) }
