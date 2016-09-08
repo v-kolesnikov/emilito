@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.shared_context 'user_context' do
+RSpec.shared_context 'user context' do
   let(:email) { Faker::Internet.email }
   let(:password) { Faker::Internet.password }
 

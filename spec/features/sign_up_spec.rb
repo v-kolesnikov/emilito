@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'support/shared_contexts/user_signed_in'
 require 'support/shared_examples/logged_user'
 
-RSpec.feature 'Feature::SignUp /sign_up', type: :feature do
+RSpec.feature 'Feature::SignUp', type: :feature do
   shared_context 'fill sign up form' do
     before do
       within('form#new_user') do

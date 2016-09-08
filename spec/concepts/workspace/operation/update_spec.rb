@@ -1,9 +1,8 @@
 require 'rails_helper'
-require 'support/workspace_context'
 
 describe Workspace::Update do
   describe '.run' do
-    include_context 'workspace_context'
+    include_context 'workspace context'
 
     let(:workspace_params) { attributes_for(:workspace) }
 

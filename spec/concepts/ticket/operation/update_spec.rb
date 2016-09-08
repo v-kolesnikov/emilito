@@ -1,9 +1,9 @@
 require 'rails_helper'
-require 'support/ticket_context'
+require 'support/shared_contexts/ticket_context'
 
 describe Ticket::Update do
   describe '.run' do
-    include_context 'ticket_context'
+    include_context 'ticket context'
 
     let(:ticket_params) { attributes_for(:ticket) }
 
