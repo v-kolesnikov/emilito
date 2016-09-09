@@ -10,6 +10,7 @@ class Webhook
 
       property :events
       property :active
+      property :secret
 
       property :workspace_id
     end

@@ -8,6 +8,7 @@ class Webhook
       property :test_url
       property :events
       property :active
+      property :secret, render_filter: ->(*) { '*' * 7 }
       property :created_at
       property :updated_at
     end

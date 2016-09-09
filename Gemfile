@@ -20,6 +20,7 @@ gem 'dry-container'
 gem 'dry-matcher', '0.5'
 gem 'dry-types'
 gem 'dry-validation'
+gem 'faraday'
 gem 'reform'
 gem 'representable'
 gem 'responders'
@@ -67,6 +68,7 @@ group :test do
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'simplecov'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

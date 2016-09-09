@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819213830) do
+ActiveRecord::Schema.define(version: 20160910113523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "accounts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -79,6 +80,17 @@ ActiveRecord::Schema.define(version: 20160819213830) do
     t.index ["login"], name: "index_users_on_login", unique: true, using: :btree
   end
 
+  create_table "webhook_deliveries", id: :uuid, default: -> { "uuid_generate_v4()" }, force: :cascade do |t|
+    t.integer  "webhook_id"
+    t.jsonb    "request"
+    t.jsonb    "response"
+    t.string   "signature"
+    t.boolean  "delivered"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["webhook_id"], name: "index_webhook_deliveries_on_webhook_id", using: :btree
+  end
+
   create_table "webhooks", force: :cascade do |t|
     t.string   "name"
     t.integer  "workspace_id"
@@ -89,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160819213830) do
     t.boolean  "active"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "secret"
     t.index ["workspace_id"], name: "index_webhooks_on_workspace_id", using: :btree
   end
 
@@ -104,6 +117,7 @@ ActiveRecord::Schema.define(version: 20160819213830) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "tickets", "workspaces"
   add_foreign_key "users", "accounts"
+  add_foreign_key "webhook_deliveries", "webhooks"
   add_foreign_key "webhooks", "workspaces"
   add_foreign_key "workspaces", "accounts"
 end
