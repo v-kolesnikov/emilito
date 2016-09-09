@@ -8,6 +8,7 @@ AllCops:
   TargetRubyVersion: 2.3
 
   Exclude:
+    - "tmp/**/*"
     - "vendor/**/*"
     - "db/schema.rb"
     - "config/initializers/doorkeeper.rb"
@@ -24,5 +25,11 @@ Style/Documentation:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/Lambda:
+  Enabled: false
+
 Style/LambdaCall:
+  Enabled: false
+
+Style/WordArray:
   Enabled: false
