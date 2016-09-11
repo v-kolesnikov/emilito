@@ -28,6 +28,7 @@ gem 'trailblazer', '~> 2.0'
 gem 'trailblazer-cells'
 gem 'trailblazer-endpoint', git: 'https://github.com/trailblazer/trailblazer-endpoint.git'
 gem 'trailblazer-rails'
+gem 'wisper', '~> 2.0.0.rc1'
 
 # === Frontend ===
 gem 'bootstrap', '4.0.0.alpha4'
