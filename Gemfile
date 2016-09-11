@@ -72,6 +72,7 @@ group :test do
   gem 'rspec'
   gem 'rspec-power_assert'
   gem 'rspec-rails'
+  gem 'rspec-sidekiq'
   gem 'selenium-webdriver'
   gem 'simplecov'
   gem 'webmock'

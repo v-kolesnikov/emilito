@@ -10,5 +10,9 @@ FactoryGirl.define do
 
     events { ['create'] }
     active true
+
+    trait(:with_signature) do
+      secret { Faker::Lorem.word }
+    end
   end
 end
