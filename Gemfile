@@ -22,7 +22,7 @@ gem 'representable'
 gem 'responders'
 
 # ===== Frontend =====
-gem 'bootstrap', '~> 4.0.0.alpha3.1'
+gem 'bootstrap', '~> 4.0.0.alpha4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
