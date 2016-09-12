@@ -1,16 +1,5 @@
 class Workspace
-  class Delete < Trailblazer::Operation
-    include Trailblazer::Operation::Responder
-
-    include Model
+  class Delete < Emilito::Operation::Delete
     model Workspace, :find
-
-    contract do
-      property :id
-    end
-
-    def process(_params)
-      model.destroy
-    end
   end
 end

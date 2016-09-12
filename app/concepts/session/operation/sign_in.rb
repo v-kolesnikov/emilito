@@ -1,7 +1,7 @@
 Session = Struct.new(:email, :password)
 
 class Session
-  class SignIn < Trailblazer::Operation
+  class SignIn < Emilito::Operation::Base
     contract do
       feature Reform::Form::Dry
 
