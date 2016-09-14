@@ -1,7 +1,5 @@
 class Account
-  class Create < Trailblazer::Operation
-    include Model
-
+  class Create < Emilito::Operation::Create
     model Account, :create
 
     contract Account::Contract::Create

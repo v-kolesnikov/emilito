@@ -1,13 +1,8 @@
 class Workspace
-  class Create < Trailblazer::Operation
-    include Model
+  class Create < Emilito::Operation::Create
     model Workspace, :create
 
     contract Workspace::Contract::Create
-
-    extend  Trailblazer::Operation::Representer::DSL
-    include Trailblazer::Operation::Representer::Rendering
-    include Trailblazer::Operation::Responder
 
     representer Workspace::Representer::Show
 

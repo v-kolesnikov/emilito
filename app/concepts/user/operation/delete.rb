@@ -1,12 +1,5 @@
 class User
-  class Delete < Trailblazer::Operation
-    include Trailblazer::Operation::Responder
-
-    include Model
+  class Delete < Emilito::Operation::Delete
     model User, :find
-
-    def process(_params)
-      model.destroy
-    end
   end
 end

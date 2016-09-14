@@ -1,13 +1,18 @@
 class User
-  class Create < Trailblazer::Operation
-    include Model
+  class Create < Emilito::Operation::Create
     model User, :create
 
-    contract User::Contract::Create
+    contract User::Contract::Base do
+      feature Reform::Form::Dry
 
-    extend  Trailblazer::Operation::Representer::DSL
-    include Trailblazer::Operation::Representer::Rendering
-    include Trailblazer::Operation::Responder
+      property :password
+      property :password_confirmation
+
+      validation do
+        required(:email).filled(:str?)
+        required(:password).filled(:str?)
+      end
+    end
 
     representer User::Representer::Show
 
