@@ -3,10 +3,10 @@ require 'support/shared_examples/operation'
 
 describe Account::Create do
   describe '.run' do
-    let(:params) { { account: { user: attributes_for(:user, :create_form) } } }
+    let(:params) { { account: {} } }
+
+    subject(:operation) { Account::Create.run(params).last }
 
     include_examples 'create operation', Account
-
-    subject { Account::Create.run(params).last }
   end
 end
