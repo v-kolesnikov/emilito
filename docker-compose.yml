@@ -15,7 +15,7 @@ services:
     volumes:
       - redis:/var/lib/redis/data
 
-  web:
+  app:
     tty: true
     stdin_open: true
     build: .
