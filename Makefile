@@ -1,5 +1,11 @@
+start:
+		docker-compose up -d
+
+stop:
+		docker-compose stop
+
 test:
-		bundle exec rake
+		docker-compose run --rm app bundle exec rake
 
 install:
 		bundle exec rails db:setup
@@ -7,14 +13,5 @@ install:
 
 api_doc:
 		raml2html -i api/api.raml -o public/api.html
-
-docker-build:
-		docker build -t emilito
-
-docker-volumes:
-		docker-compose run data bash
-
-rails-c:
-		docker-compose run web rails c
 
 .PHONY: test
