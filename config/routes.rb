@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/BlockLength
 Rails.application.routes.draw do
   use_doorkeeper
 
