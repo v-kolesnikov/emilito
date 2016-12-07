@@ -4,6 +4,7 @@ cache: bundler
 
 before_script:
   - make install
+  - bundle exec rubocop .
 
 rvm:
   - 2.3.1
