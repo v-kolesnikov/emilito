@@ -15,22 +15,22 @@ gem 'rollbar'
 gem 'doorkeeper'
 gem 'dry-types'
 gem 'dry-validation'
-gem 'trailblazer'
-gem 'trailblazer-rails'
 gem 'reform'
 gem 'representable'
 gem 'responders'
+gem 'trailblazer'
+gem 'trailblazer-rails'
 
 # ===== Frontend =====
 gem 'bootstrap', '~> 4.0.0.alpha4'
-gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
-gem 'jquery-rails'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'jquery-rails'
+gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'slim'
+gem 'turbolinks', '~> 5'
+gem 'uglifier', '>= 1.3.0'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
@@ -45,20 +45,20 @@ group :development, :test do
 end
 
 group :development do
-  gem 'web-console'
   gem 'listen', '~> 3.0.5'
   gem 'rubocop'
+  gem 'web-console'
 end
 
 group :test do
   gem 'capybara'
+  gem 'codeclimate-test-reporter', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker', require: false
   gem 'rspec'
   gem 'rspec-rails'
   gem 'simplecov'
-  gem 'codeclimate-test-reporter', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
