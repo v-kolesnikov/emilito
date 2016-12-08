@@ -47,9 +47,16 @@ RSpec.feature 'Feature::SignUp', type: :feature do
 
   context 'when user signed in' do
     include_context 'user signed in'
+
     scenario '/sign_up redirect to /dashboard page' do
       visit sign_up_path
       expect(page).to have_current_path(dashboard_path)
+    end
+
+    context 'go to root page' do
+      before { visit(root_path) }
+      it { expect(page).not_to have_link(I18n.t(:sign_up)) }
+      it { expect(page).not_to have_button(I18n.t(:sign_up)) }
     end
   end
 end
