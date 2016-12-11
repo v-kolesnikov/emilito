@@ -33,6 +33,11 @@ describe User::SignUp do
         it { expect(subject).to be_fail_with_key :email }
       end
 
+      context 'option email an invalid format' do
+        let(:params) { { user: { email: 'foobar.com' } } }
+        it { expect(subject).to be_fail_with_key :email }
+      end
+
       context 'option password not passed' do
         let(:params) { { user: { email: 'foo@bar.io' } } }
         it { expect(subject).to be_fail_with_key :password }
