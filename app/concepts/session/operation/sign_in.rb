@@ -23,7 +23,7 @@ class Session
         required(:email).filled(:str?)
         required(:password).filled(:str?)
 
-        rule(user_exists: [:email, :password]) do |email, password|
+        rule(password: [:email, :password]) do |email, password|
           password.password_ok?(email)
         end
       end
