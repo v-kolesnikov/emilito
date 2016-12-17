@@ -18,11 +18,11 @@ gem 'dry-validation'
 gem 'reform'
 gem 'representable'
 gem 'responders'
-gem 'trailblazer'
+gem 'trailblazer', '~> 1.0'
 gem 'trailblazer-rails'
 
 # ===== Frontend =====
-gem 'bootstrap', '~> 4.0.0.alpha4'
+gem 'bootstrap', '4.0.0.alpha4'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
