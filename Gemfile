@@ -18,7 +18,7 @@ gem 'dry-validation'
 gem 'reform'
 gem 'representable'
 gem 'responders'
-gem 'trailblazer', '~> 1.0'
+gem 'trailblazer', '~> 2.0'
 gem 'trailblazer-rails'
 
 # ===== Frontend =====

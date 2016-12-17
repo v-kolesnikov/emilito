@@ -165,6 +165,8 @@ GEM
     parser (2.3.3.1)
       ast (~> 2.2)
     pg (0.19.0)
+    pipetree (0.0.5)
+      uber
     poltergeist (1.12.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -288,21 +290,26 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    trailblazer (1.1.2)
+    trailblazer (2.0.0)
       declarative
-      reform (>= 2.0.0, < 3.0.0)
-      uber (>= 0.0.15, < 0.1.0)
+      reform (>= 2.2.0, < 3.0.0)
+      trailblazer-operation (>= 0.0.9)
+      uber (>= 0.1.0, < 0.2.0)
     trailblazer-loader (0.1.0)
-    trailblazer-rails (0.4.0)
-      reform-rails (>= 0.1.4)
-      trailblazer (>= 1.0.4)
+    trailblazer-operation (0.0.9)
+      declarative
+      pipetree (>= 0.0.5, < 0.1.0)
+      uber (>= 0.1.0, < 0.2.0)
+    trailblazer-rails (1.0.0)
+      reform-rails (>= 0.1.4, < 0.2.0)
+      trailblazer (>= 2.0.0.beta1, < 2.1.0)
       trailblazer-loader (>= 0.1.0)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uber (0.0.15)
+    uber (0.1.0)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.1.2)
@@ -357,7 +364,7 @@ DEPENDENCIES
   simple_form
   simplecov
   slim
-  trailblazer (~> 1.0)
+  trailblazer (~> 2.0)
   trailblazer-rails
   turbolinks (~> 5)
   tzinfo-data
