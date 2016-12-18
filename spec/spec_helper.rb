@@ -5,6 +5,9 @@ end
 
 require 'faker'
 require 'factory_girl'
+require 'rspec/power_assert'
+
+RSpec::PowerAssert.verbose_successful_report = false
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

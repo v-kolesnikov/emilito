@@ -59,6 +59,7 @@ group :test do
   gem 'faker', require: false
   gem 'poltergeist'
   gem 'rspec'
+  gem 'rspec-power_assert'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
   gem 'simplecov'
