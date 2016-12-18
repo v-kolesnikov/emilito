@@ -1,10 +1,11 @@
 module Emilito
   module Operation
     class Delete < Emilito::Operation::Base
-      include Model
+      step :model!
+      step :destroy!
 
-      def process(*)
-        model.destroy
+      def destroy!(options, **)
+        options['model'].destroy
       end
     end
   end
