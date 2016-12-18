@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/trailblazer/trailblazer-endpoint.git
+  revision: 9ec75c05425a5447893e67c47042a98026f3c94b
+  specs:
+    trailblazer-endpoint (0.0.1)
+      dry-matcher
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -61,6 +68,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cells (4.1.5)
+      tilt (>= 1.4, < 3)
+      uber (>= 0.1.0, < 0.2.0)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.0.0)
@@ -106,6 +116,7 @@ GEM
       dry-container (~> 0.2, >= 0.2.6)
       dry-core (~> 0.1)
       dry-equalizer (~> 0.2)
+    dry-matcher (0.5.0)
     dry-types (0.9.3)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
@@ -299,6 +310,8 @@ GEM
       reform (>= 2.2.0, < 3.0.0)
       trailblazer-operation (>= 0.0.9)
       uber (>= 0.1.0, < 0.2.0)
+    trailblazer-cells (0.0.3)
+      cells (>= 4.1.0.rc1, < 5.0.0)
     trailblazer-loader (0.1.0)
     trailblazer-operation (0.0.9)
       declarative
@@ -343,6 +356,7 @@ DEPENDENCIES
   database_cleaner
   doorkeeper
   dotenv-rails
+  dry-matcher
   dry-types
   dry-validation
   factory_girl_rails
@@ -370,6 +384,8 @@ DEPENDENCIES
   simplecov
   slim
   trailblazer (~> 2.0)
+  trailblazer-cells
+  trailblazer-endpoint!
   trailblazer-rails
   turbolinks (~> 5)
   tzinfo-data

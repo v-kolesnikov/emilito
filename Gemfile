@@ -13,12 +13,15 @@ gem 'rollbar'
 
 # ===== Web architecture =====
 gem 'doorkeeper'
+gem 'dry-matcher'
 gem 'dry-types'
 gem 'dry-validation'
 gem 'reform'
 gem 'representable'
 gem 'responders'
 gem 'trailblazer', '~> 2.0'
+gem 'trailblazer-cells'
+gem 'trailblazer-endpoint', git: 'https://github.com/trailblazer/trailblazer-endpoint.git'
 gem 'trailblazer-rails'
 
 # ===== Frontend =====

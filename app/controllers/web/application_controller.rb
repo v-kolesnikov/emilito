@@ -4,7 +4,8 @@ module Web
 
     helper_method :current_user, :logged_in?
 
-    include Trailblazer::Operation::Controller
+    include Trailblazer::Endpoint::Controller
+    include Trailblazer::Rails::Controller
 
     def authorize!
       redirect_to sign_in_path unless logged_in?
