@@ -29,16 +29,22 @@ class Session
       end
     end
 
-    def process(params)
-      validate(params[:session]) do
-        self.model = User.find_by(email: contract.email)
-      end
+    step :model!
+    step Contract::Build()
+    step :extract_params!
+    step Contract::Validate(skip_extract: true)
+    step :set_user!
+
+    def extract_params!(options, **)
+      options['contract.default.params'] = options['params'][:session]
     end
 
-    private
+    def model!(options, **)
+      options['model'] = Session.new
+    end
 
-    def model!(_)
-      Session.new
+    def set_user!(options, params:, **)
+      options['model'] = User.find_by(email: params.dig(:session, :email))
     end
   end
 end

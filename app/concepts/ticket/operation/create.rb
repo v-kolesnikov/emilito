@@ -1,15 +1,15 @@
 class Ticket
   class Create < Emilito::Operation::Create
-    model Ticket
-
     contract Ticket::Contract::Base
 
-    representer Ticket::Representer::Show
+    representer :render, Ticket::Representer::Show
 
-    def process(params)
-      validate(params[:ticket]) do
-        contract.save
-      end
+    def model!(options, **)
+      options['model'] = Ticket.new
+    end
+
+    def type
+      :ticket
     end
   end
 end

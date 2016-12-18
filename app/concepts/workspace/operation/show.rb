@@ -1,6 +1,9 @@
 class Workspace
   class Show < Emilito::Operation::Present
-    model Workspace, :find
-    representer Representer::Show
+    representer :render, Representer::Show
+
+    def model!(options, params:, **)
+      options['model'] = Workspace.find_by(params.slice(:id))
+    end
   end
 end

@@ -6,6 +6,6 @@ RSpec.shared_context 'user context' do
 
   let!(:current_user) do
     user_params = { email: email, password: password }
-    User::Create.(user: user_params).model
+    User::Create.(user: user_params)['model']
   end
 end

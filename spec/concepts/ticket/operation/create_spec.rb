@@ -1,20 +1,31 @@
 require 'rails_helper'
 require 'support/shared_contexts/workspace_context'
-require 'support/shared_examples/operation'
 
 describe Ticket::Create do
-  describe '.run' do
+  describe '.call' do
+    subject(:res) { Ticket::Create.(params) }
+
     include_context 'workspace context'
 
-    let(:ticket_params) do
-      attributes_for(:ticket).merge(
-        account_id: account.id,
-        workspace_id: workspace.id
-      )
+    let(:params) do
+      { ticket: { title: 'A new ticket',
+                  account_id: account.id,
+                  workspace_id: workspace.id } }
     end
 
-    let(:params) { { ticket: ticket_params } }
+    it 'returns the operation result' do
+      is_asserted_by { res }
+      is_asserted_by { res['model'] }
+      is_asserted_by { res['contract.default.class'] }
+      is_asserted_by { res['representer.render.class'] }
+    end
 
-    include_examples 'create operation', Ticket
+    it 'create a new Ticket' do
+      model = res['model']
+      is_asserted_by { res.success? }
+      is_asserted_by { model.persisted? }
+      is_asserted_by { model.is_a? Ticket }
+      is_asserted_by { model.workspace_id == workspace.id }
+    end
   end
 end

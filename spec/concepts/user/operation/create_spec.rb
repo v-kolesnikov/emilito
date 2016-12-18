@@ -1,23 +1,46 @@
 require 'rails_helper'
-require 'support/shared_examples/operation'
 
 describe User::Create do
-  describe '.run' do
-    let(:params) { { user: attributes_for(:user, :create_form) } }
+  describe '.call' do
+    subject(:res) { User::Create.(params) }
 
-    include_examples 'create operation', User
+    let(:params) do
+      { user: { login: Faker::Internet.user_name,
+                email: Faker::Internet.email,
+                password: 'password' } }
+    end
 
-    context 'when params invalid' do
-      subject { User::Create.run(params).last }
+    it 'returns the operation result' do
+      is_asserted_by { res }
+      is_asserted_by { res['model'] }
+      is_asserted_by { res['contract.default.class'] }
+      is_asserted_by { res['representer.render.class'] }
+    end
 
-      context 'option email not passed' do
-        let(:params) { { user: { password: '123456' } } }
-        it { expect(subject).to be_fail_with_key :email }
+    it 'create a new User' do
+      model = res['model']
+      is_asserted_by { res.success? }
+      is_asserted_by { model.persisted? }
+      is_asserted_by { model.is_a? User }
+    end
+
+    context 'when parameters are invalid:' do
+      let(:errors) { res['result.contract.default'].errors.messages }
+
+      context 'no required parameter :email' do
+        let(:params) { super().tap { |p| p[:user].delete(:email) } }
+        it do
+          is_asserted_by { res.failure? }
+          is_asserted_by { errors.key? :email }
+        end
       end
 
-      context 'option password not passed' do
-        let(:params) { { user: { email: 'foo@bar.io' } } }
-        it { expect(subject).to be_fail_with_key :password }
+      context 'no required parameter :password' do
+        let(:params) { super().tap { |p| p[:user].delete(:password) } }
+        it do
+          is_asserted_by { res.failure? }
+          is_asserted_by { errors.key? :password }
+        end
       end
     end
   end

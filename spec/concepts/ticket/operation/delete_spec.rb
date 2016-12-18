@@ -1,11 +1,18 @@
 require 'rails_helper'
 require 'support/shared_contexts/ticket_context'
-require 'support/shared_examples/operation'
 
 describe Ticket::Delete do
-  describe '.run' do
+  describe '.call' do
+    subject(:res) { Ticket::Delete.(params) }
+
     include_context 'ticket context'
+
     let(:params) { { id: ticket.id } }
-    include_examples 'delete operation', Ticket
+
+    it 'delete a exist Workspace' do
+      model = res['model']
+      is_asserted_by { res.success? }
+      is_asserted_by { model.destroyed? }
+    end
   end
 end

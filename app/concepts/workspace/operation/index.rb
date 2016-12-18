@@ -1,11 +1,9 @@
 class Workspace
   class Index < Emilito::Operation::Present
-    include Trailblazer::Operation::Collection
+    representer :render, Workspace::Representer::Index
 
-    representer Workspace::Representer::Index
-
-    def model!(*)
-      Workspace.all
+    def model!(options, params:, **)
+      options['model'] = Workspace.where(params.slice(:account_id))
     end
   end
 end

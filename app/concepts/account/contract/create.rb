@@ -1,6 +1,6 @@
 class Account
   module Contract
-    class Create < Base
+    class Create < Account::Contract::Base
     end
   end
 end

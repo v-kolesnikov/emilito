@@ -1,15 +1,17 @@
 require 'rails_helper'
-require 'support/shared_examples/operation'
 
 describe User::Delete do
-  describe '.run' do
-    let(:user) do
-      params = { user: attributes_for(:user, :create_form) }
-      User::Create.(params).model
-    end
+  describe '.call' do
+    subject(:res) { User::Delete.(params) }
+
+    let(:user) { User::Create.(user: attributes_for(:user))['model'] }
 
     let(:params) { { id: user.id } }
 
-    include_examples 'delete operation', User
+    it 'delete a exist User' do
+      model = res['model']
+      is_asserted_by { res.success? }
+      is_asserted_by { model.destroyed? }
+    end
   end
 end
