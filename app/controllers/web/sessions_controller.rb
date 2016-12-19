@@ -4,17 +4,22 @@ module Web
 
     # GET /sign_in
     def new
-      form Session::SignIn
+      run Session::SignIn
     end
 
     # POST /sign_in
     def create
-      run Session::SignIn do |op|
-        login(op.model)
-        return redirect_to dashboard_path
-      end
+      endpoint Session::SignIn, args: [params] do |m|
+        m.success do |result|
+          login(result['model'])
+          redirect_to dashboard_path
+        end
 
-      render :new, status: :unauthorized
+        m.invalid do |result|
+          @form = result['contract.default']
+          render :new, status: :unauthorized
+        end
+      end
     end
 
     # DELETE /sign_out

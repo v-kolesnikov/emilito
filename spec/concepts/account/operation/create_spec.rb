@@ -1,12 +1,22 @@
 require 'rails_helper'
-require 'support/shared_examples/operation'
 
 describe Account::Create do
-  describe '.run' do
+  describe '.call' do
+    subject(:res) { Account::Create.(params) }
+
     let(:params) { { account: {} } }
 
-    subject(:operation) { Account::Create.run(params).last }
+    it 'returns the operation result' do
+      is_asserted_by { res }
+      is_asserted_by { res['model'] }
+      is_asserted_by { res['contract.default.class'] }
+    end
 
-    include_examples 'create operation', Account
+    it 'create a new Account' do
+      model = res['model']
+      is_asserted_by { res.success? }
+      is_asserted_by { model.persisted? }
+      is_asserted_by { model.is_a? Account }
+    end
   end
 end

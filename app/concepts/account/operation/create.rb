@@ -1,13 +1,13 @@
 class Account
   class Create < Emilito::Operation::Create
-    model Account, :create
-
     contract Account::Contract::Create
 
-    def process(params)
-      validate(params[:account]) do
-        contract.save
-      end
+    def model!(options, **)
+      options['model'] = Account.new
+    end
+
+    def type
+      :account
     end
   end
 end

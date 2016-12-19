@@ -1,4 +1,4 @@
-= simple_form_for(form, url: sign_up_path, defaults: { required: false, label: false }) do |f|
+= simple_form_for(form, as: :user, url: sign_up_path, defaults: { required: false, label: false }) do |f|
   = f.input :login, placeholder: t(:'.pick_a_username')
   = f.input :email, placeholder: t(:'.your_email_address')
   = f.input :password, placeholder: t(:'.create_a_password')

@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/trailblazer/trailblazer-endpoint.git
+  revision: 9ec75c05425a5447893e67c47042a98026f3c94b
+  specs:
+    trailblazer-endpoint (0.0.1)
+      dry-matcher
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -61,6 +68,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    cells (4.1.5)
+      tilt (>= 1.4, < 3)
+      uber (>= 0.1.0, < 0.2.0)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     chromedriver-helper (1.0.0)
@@ -106,6 +116,7 @@ GEM
       dry-container (~> 0.2, >= 0.2.6)
       dry-core (~> 0.1)
       dry-equalizer (~> 0.2)
+    dry-matcher (0.5.0)
     dry-types (0.9.3)
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1)
@@ -165,10 +176,13 @@ GEM
     parser (2.3.3.1)
       ast (~> 2.2)
     pg (0.19.0)
+    pipetree (0.0.5)
+      uber
     poltergeist (1.12.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
       websocket-driver (>= 0.2.0)
+    power_assert (0.3.1)
     powerpack (0.1.1)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -237,6 +251,9 @@ GEM
     rspec-mocks (3.5.0)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
+    rspec-power_assert (0.4.0)
+      power_assert (~> 0.3.0)
+      rspec (>= 2.14)
     rspec-rails (3.5.2)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -288,21 +305,28 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    trailblazer (1.1.2)
+    trailblazer (2.0.0)
       declarative
-      reform (>= 2.0.0, < 3.0.0)
-      uber (>= 0.0.15, < 0.1.0)
+      reform (>= 2.2.0, < 3.0.0)
+      trailblazer-operation (>= 0.0.9)
+      uber (>= 0.1.0, < 0.2.0)
+    trailblazer-cells (0.0.3)
+      cells (>= 4.1.0.rc1, < 5.0.0)
     trailblazer-loader (0.1.0)
-    trailblazer-rails (0.4.0)
-      reform-rails (>= 0.1.4)
-      trailblazer (>= 1.0.4)
+    trailblazer-operation (0.0.9)
+      declarative
+      pipetree (>= 0.0.5, < 0.1.0)
+      uber (>= 0.1.0, < 0.2.0)
+    trailblazer-rails (1.0.0)
+      reform-rails (>= 0.1.4, < 0.2.0)
+      trailblazer (>= 2.0.0.beta1, < 2.1.0)
       trailblazer-loader (>= 0.1.0)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uber (0.0.15)
+    uber (0.1.0)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.1.2)
@@ -332,6 +356,7 @@ DEPENDENCIES
   database_cleaner
   doorkeeper
   dotenv-rails
+  dry-matcher
   dry-types
   dry-validation
   factory_girl_rails
@@ -350,6 +375,7 @@ DEPENDENCIES
   responders
   rollbar
   rspec
+  rspec-power_assert
   rspec-rails
   rubocop
   sass-rails (~> 5.0)
@@ -357,7 +383,9 @@ DEPENDENCIES
   simple_form
   simplecov
   slim
-  trailblazer (~> 1.0)
+  trailblazer (~> 2.0)
+  trailblazer-cells
+  trailblazer-endpoint!
   trailblazer-rails
   turbolinks (~> 5)
   tzinfo-data

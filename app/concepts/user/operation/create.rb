@@ -1,7 +1,5 @@
 class User
   class Create < Emilito::Operation::Create
-    model User, :create
-
     contract User::Contract::Base do
       feature Reform::Form::Dry
 
@@ -14,12 +12,14 @@ class User
       end
     end
 
-    representer User::Representer::Show
+    representer :render, User::Representer::Show
 
-    def process(params)
-      validate(params[:user]) do
-        contract.save
-      end
+    def model!(options, **)
+      options['model'] = User.new
+    end
+
+    def type
+      :user
     end
   end
 end

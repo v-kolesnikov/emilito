@@ -1,11 +1,9 @@
 class User
   class Index < Emilito::Operation::Present
-    include Trailblazer::Operation::Collection
+    representer :render, User::Representer::Index
 
-    representer User::Representer::Index
-
-    def model!(*)
-      User.all
+    def model!(options, **)
+      options['model'] = User.all
     end
   end
 end

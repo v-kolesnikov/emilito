@@ -1,78 +1,99 @@
 require 'rails_helper'
-require 'support/shared_examples/operation'
-require 'support/shared_contexts/user_context'
 
 describe User::SignUp do
-  describe '.run' do
+  describe '.call' do
+    subject(:res) { User::SignUp.(params) }
+
     let(:params) do
-      { user: {
-        login: Faker::Internet.user_name,
-        email: Faker::Internet.email,
-        password: Faker::Internet.password
-      } }
+      { user: { login: Faker::Internet.user_name,
+                email: Faker::Internet.email,
+                password: Faker::Internet.password } }
     end
 
-    include_examples 'create operation', User
+    it 'returns the operation result' do
+      is_asserted_by { res }
+      is_asserted_by { res['model'] }
+      is_asserted_by { res['contract.default.class'] }
+      is_asserted_by { res['representer.render.class'] }
+    end
 
-    subject { User::SignUp.run(params).last }
+    it 'create a new User' do
+      model = res['model']
+      is_asserted_by { res.success? }
+      is_asserted_by { model.persisted? }
+      is_asserted_by { model.is_a? User }
+    end
 
     it 'create a new Account for User' do
-      expect(subject.model.account).to be
-      expect(subject.model.account.persisted?).to be
-      expect(subject.model.account).to be_kind_of Account
+      model = res['model']
+      is_asserted_by { model.account }
+      is_asserted_by { model.account.persisted? }
+      is_asserted_by { model.account.is_a? Account }
     end
 
-    context 'when params invalid' do
-      context 'option login not passed' do
-        let(:params) { { user: { email: 'foo@bar.io', password: '123456' } } }
-        it { expect(subject).to be_fail_with_key :login }
+    context 'when parameters are invalid:' do
+      subject(:errors) { res['result.contract.default'].errors.messages }
+
+      context 'no required parameter :login' do
+        let(:params) { super().tap { |p| p[:user].delete(:login) } }
+        it_is_asserted_by { errors.key? :login }
       end
 
-      context 'option email not passed' do
-        let(:params) { { user: { password: '123456' } } }
-        it { expect(subject).to be_fail_with_key :email }
+      context 'no required parameter :email' do
+        let(:params) { super().tap { |p| p[:user].delete(:email) } }
+        it_is_asserted_by { errors.key? :email }
+      end
+
+      context 'no required parameter :password' do
+        let(:params) { super().tap { |p| p[:user].delete(:password) } }
+        it_is_asserted_by { errors.key? :password }
       end
 
       context 'option email an invalid format' do
-        let(:params) { { user: { email: 'foobar.com' } } }
-        it { expect(subject).to be_fail_with_key :email }
-      end
-
-      context 'option password not passed' do
-        let(:params) { { user: { email: 'foo@bar.io' } } }
-        it { expect(subject).to be_fail_with_key :password }
+        let(:params) { super().tap { |p| p[:user][:email] = 'foobar.com' } }
+        it_is_asserted_by { errors.key? :email }
       end
 
       context 'option password has a length of less than 6 symbols' do
-        let(:params) { { user: { email: 'foo@bar.io', password: '12345' } } }
-        it { expect(subject).to be_fail_with_key :password }
+        let(:params) { super().tap { |p| p[:user][:password] = '12345' } }
+        it_is_asserted_by { errors.key? :password }
       end
     end
 
     context 'when passed login already exists' do
+      subject(:errors) { res['result.contract.default'].errors.messages }
+
       before do
-        params = { login: 'tulio', email: 'me@tuliuno.mx', password: '123456' }
-        User::Create.(user: params.merge(password_confirmation: '123456'))
+        User::SignUp.(user: { login: 'tulio',
+                              email: 'me@tuliuno.mx',
+                              password: '123456' })
       end
 
       let(:params) do
-        { user: { login: 'tulio', email: 'me@tuliodo.mx', password: '654321' } }
+        { user: { login: 'tulio',
+                  email: 'me@tuliodo.mx',
+                  password: '654321' } }
       end
 
-      it { expect(subject).to be_fail_with_key :login }
+      it_is_asserted_by { errors.key? :login }
     end
 
     context 'when passed email already exists' do
-      include_context 'user context' do
-        let(:email) { 'me@tulio.mx' }
-        let(:password) { '123456' }
+      subject(:errors) { res['result.contract.default'].errors.messages }
+
+      before do
+        User::SignUp.(user: { login: 'tuliuno',
+                              email: 'me@tulio',
+                              password: '123456' })
       end
 
       let(:params) do
-        { user: { login: 'tulio', email: 'me@tulio.mx', password: '123456' } }
+        { user: { login: 'tuliodo',
+                  email: 'me@tulio',
+                  password: '654321' } }
       end
 
-      it { expect(subject).to be_fail_with_key :email }
+      it_is_asserted_by { errors.key? :email }
     end
   end
 end

@@ -1,6 +1,6 @@
 class User
   module Contract
-    class Update < Base
+    class Update < User::Contract::Base
       feature Reform::Form::Dry
 
       validation do

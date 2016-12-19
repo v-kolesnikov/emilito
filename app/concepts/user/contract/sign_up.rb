@@ -2,14 +2,12 @@ require 'uri'
 
 class User
   module Contract
-    class SignUp < Base
+    class SignUp < User::Contract::Base
       feature Reform::Form::Dry
 
       EMAIL_REGEXP = URI::MailTo::EMAIL_REGEXP
 
       property :password
-      property :password_confirmation
-
       property :account, default: -> { Account.new }
 
       validation do

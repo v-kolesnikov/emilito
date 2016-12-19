@@ -4,17 +4,22 @@ module Web
 
     # GET /sign_up
     def new
-      form User::SignUp
+      run User::SignUp
     end
 
     # POST /sign_up
     def create
-      run User::SignUp do |op|
-        login(op.model)
-        return redirect_to dashboard_path
-      end
+      endpoint User::SignUp, args: [params] do |m|
+        m.success do |result|
+          login(result['model'])
+          redirect_to dashboard_path
+        end
 
-      render :new, status: :unprocessable_entity
+        m.invalid do |result|
+          @form = result['contract.default']
+          render :new, status: :unprocessable_entity
+        end
+      end
     end
   end
 end

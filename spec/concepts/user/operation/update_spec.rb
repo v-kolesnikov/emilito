@@ -1,18 +1,22 @@
 require 'rails_helper'
 
 describe User::Update do
-  describe '.run' do
+  describe '.call' do
+    subject(:res) { User::Update.(params) }
+
     let(:user) do
-      params = { user: attributes_for(:user, :create_form) }
-      User::Create.(params).model
+      User::Create.(user: attributes_for(:user))['model']
     end
 
-    let(:user_params) { { email: Faker::Internet.email } }
+    let(:params) do
+      { id: user.id, user: { email: Faker::Internet.email } }
+    end
 
-    it 'update exist User' do
-      _, op = User::Update.run(id: user.id, user: user_params)
-      expect(op).to be_success
-      expect(op.model.email).to eq user_params[:email]
+    it 'update a exist User' do
+      model = res['model']
+      is_asserted_by { res.success? }
+      is_asserted_by { model.id == user.id }
+      is_asserted_by { model.email == params[:user][:email] }
     end
   end
 end

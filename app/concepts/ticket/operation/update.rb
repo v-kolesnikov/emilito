@@ -1,5 +1,7 @@
 class Ticket
   class Update < Ticket::Create
-    model Ticket, :update
+    def model!(options, params:, **)
+      options['model'] = Ticket.find_by(params.slice(:workspace_id, :id))
+    end
   end
 end
