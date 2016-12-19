@@ -5,9 +5,9 @@ require 'support/shared_examples/not_logged_user'
 
 RSpec.feature 'Feature::Session', type: :feature do
   context 'when user not signed in' do
-    scenario '/dashboard redirect to login page' do
+    scenario '"/dashboard" redirect to login page' do
       visit '/dashboard'
-      expect(page).to have_current_path(sign_in_path)
+      is_asserted_by { page.current_path == sign_in_path }
     end
   end
 
@@ -17,7 +17,7 @@ RSpec.feature 'Feature::Session', type: :feature do
       let(:password) { '12345678' }
     end
 
-    scenario 'redirect to /dashboard after login' do
+    scenario 'redirect to "/dashboard" after login' do
       visit '/sign_in'
 
       within('form#new_session') do
@@ -26,7 +26,7 @@ RSpec.feature 'Feature::Session', type: :feature do
         click_on I18n.t(:sign_in)
       end
 
-      expect(page).to have_current_path(dashboard_path)
+      is_asserted_by { page.current_path == dashboard_path }
     end
   end
 
@@ -46,10 +46,12 @@ RSpec.feature 'Feature::Session', type: :feature do
 
   context 'when signed user click to Sign out' do
     include_context 'user signed in'
+
     before do
       click_on 'dropdownMenuButton'
       click_on I18n.t(:sign_out)
     end
+
     it_behaves_like 'not logged user'
   end
 end
