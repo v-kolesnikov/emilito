@@ -44,6 +44,7 @@ gem 'bcrypt'
 
 group :development, :test do
   gem 'awesome_print', require: 'ap'
+  gem 'i18n-tasks'
   gem 'pry-byebug', platform: :mri
 end
 
