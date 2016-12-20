@@ -41,6 +41,7 @@ end
 
 # ===== Other =====
 gem 'bcrypt'
+gem 'rails-erd'
 
 group :development, :test do
   gem 'awesome_print', require: 'ap'
