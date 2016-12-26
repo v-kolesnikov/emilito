@@ -2,29 +2,23 @@ module Api
   module V3
     class TicketsController < Api::V3::ApplicationController
       def index
-        respond Ticket::Index
+        endpoint Ticket::Index
       end
 
       def show
-        respond Ticket::Show
+        endpoint Ticket::Show
       end
 
       def create
-        respond Ticket::Create, namespace: [:api, :v3, workspace]
+        endpoint Ticket::Create
       end
 
       def update
-        respond Ticket::Update, namespace: [:api, :v3, workspace]
+        endpoint Ticket::Update
       end
 
       def destroy
-        respond Ticket::Delete, namespace: [:api, :v3, workspace]
-      end
-
-      protected
-
-      def workspace
-        @workspace ||= Workspace.find(params[:workspace_id])
+        endpoint Ticket::Delete
       end
     end
   end

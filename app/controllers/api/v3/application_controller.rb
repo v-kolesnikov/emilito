@@ -1,12 +1,18 @@
 module Api
   module V3
-    class ApplicationController < ::Api::ApplicationController
+    class ApplicationController < ActionController::API
       include ActionController::MimeResponds
-      include Trailblazer::Rails::Controller
+      include Emilito::Endpoint::Controller
 
       respond_to :json
 
-      before_action :doorkeeper_authorize!
+      def handlers(options = {})
+        Emilito::Endpoint::Handlers::ApiV3.new(self, options).()
+      end
+
+      def params
+        request.parameters
+      end
     end
   end
 end
