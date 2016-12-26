@@ -1,7 +1,6 @@
 class User
   class Delete < Emilito::Operation::Delete
-    def model!(options, params:, **)
-      options['model'] = User.find_by(params.slice(:id))
-    end
+    step Model(User, :find_by)
+    step :destroy!
   end
 end
