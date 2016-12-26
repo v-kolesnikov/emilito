@@ -1,7 +1,6 @@
 class Ticket
   class Delete < Emilito::Operation::Delete
-    def model!(options, params:, **)
-      options['model'] = Ticket.find_by(params.slice(:id))
-    end
+    step Model(Ticket, :find_by)
+    step :destroy!
   end
 end

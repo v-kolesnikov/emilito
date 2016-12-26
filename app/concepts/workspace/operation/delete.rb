@@ -1,7 +1,6 @@
 class Workspace
   class Delete < Emilito::Operation::Delete
-    def model!(options, params:, **)
-      options['model'] = Workspace.find_by(params.slice(:id))
-    end
+    step Model(Workspace, :find_by)
+    step :destroy!
   end
 end

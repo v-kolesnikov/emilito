@@ -1,9 +1,6 @@
 class User
   class Show < Emilito::Operation::Present
+    step Model(User, :find_by)
     representer :render, User::Representer::Show
-
-    def model!(options, params:, **)
-      options['model'] = User.find_by(params.slice(:id))
-    end
   end
 end
