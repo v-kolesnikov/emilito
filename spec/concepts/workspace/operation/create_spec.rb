@@ -8,7 +8,8 @@ describe Workspace::Create do
     include_context 'account context'
 
     let(:params) do
-      { workspace: { title: Faker::Lorem.word, account_id: account.id } }
+      { account_id: account.id,
+        workspace: attributes_for(:workspace) }
     end
 
     it 'returns the operation result' do

@@ -5,7 +5,6 @@ RSpec.shared_context 'user context' do
   let(:password) { Faker::Internet.password }
 
   let!(:current_user) do
-    user_params = { email: email, password: password }
-    User::Create.(user: user_params)['model']
+    User::Create.(user: { email: email, password: password })['model']
   end
 end

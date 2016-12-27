@@ -6,9 +6,9 @@ RSpec.shared_context 'ticket context' do
 
   let!(:ticket) do
     Ticket::Create.(
-      ticket: { title: Faker::StarWars.quote,
-                account_id: account.id,
-                workspace_id: workspace.id }
+      account_id: account.id,
+      workspace_id: workspace.id,
+      ticket: attributes_for(:ticket)
     )['model']
   end
 end

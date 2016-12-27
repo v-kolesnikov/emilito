@@ -5,9 +5,7 @@ RSpec.shared_context 'workspace context' do
   include_context 'account context'
 
   let!(:workspace) do
-    Workspace::Create.(
-      workspace: { title: Faker::Lorem.word,
-                   account_id: account.id }
-    )['model']
+    params = { workspace: attributes_for(:workspace), account_id: account.id }
+    Workspace::Create.(params)['model']
   end
 end

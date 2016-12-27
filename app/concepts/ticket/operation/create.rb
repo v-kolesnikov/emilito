@@ -4,8 +4,8 @@ class Ticket
 
     representer :render, Ticket::Representer::Show
 
-    def model!(options, **)
-      options['model'] = Ticket.new
+    def model!(options, params:, **)
+      options['model'] = Ticket.new(params.slice(:workspace_id))
     end
 
     def type

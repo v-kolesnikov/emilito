@@ -1,7 +1,5 @@
 FactoryGirl.define do
   factory :ticket do
-    account
-    workspace
-    title { Faker::Lorem.word }
+    title { Faker::Hipster.sentence }
   end
 end

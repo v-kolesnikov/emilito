@@ -1,5 +1,5 @@
 class Ticket
-  class Index < Emilito::Operation::Present
+  class Index < Emilito::Operation::PresentCollection
     representer :render, Ticket::Representer::Index
 
     def model!(options, params:, **)
