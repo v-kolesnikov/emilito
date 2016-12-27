@@ -1,5 +1,5 @@
 class Workspace
-  class Index < Emilito::Operation::Present
+  class Index < Emilito::Operation::PresentCollection
     representer :render, Workspace::Representer::Index
 
     def model!(options, params:, **)

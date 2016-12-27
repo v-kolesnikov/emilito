@@ -1,5 +1,5 @@
 class User
-  class Index < Emilito::Operation::Present
+  class Index < Emilito::Operation::PresentCollection
     representer :render, User::Representer::Index
 
     def model!(options, **)

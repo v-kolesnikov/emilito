@@ -8,9 +8,8 @@ describe Ticket::Create do
     include_context 'workspace context'
 
     let(:params) do
-      { ticket: { title: 'A new ticket',
-                  account_id: account.id,
-                  workspace_id: workspace.id } }
+      { workspace_id: workspace.id,
+        ticket: { title: 'A new ticket' } }
     end
 
     it 'returns the operation result' do
