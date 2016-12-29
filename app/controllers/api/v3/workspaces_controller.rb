@@ -2,23 +2,23 @@ module Api
   module V3
     class WorkspacesController < Api::V3::ApplicationController
       def index
-        respond Workspace::Index
+        endpoint Workspace::Index
       end
 
       def show
-        respond Workspace::Show
+        endpoint Workspace::Show
       end
 
       def create
-        respond Workspace::Create, namespace: [:api, :v3]
+        endpoint Workspace::Create
       end
 
       def update
-        respond Workspace::Update, namespace: [:api, :v3]
+        endpoint Workspace::Update
       end
 
       def destroy
-        respond Workspace::Delete, namespace: [:api, :v3]
+        endpoint Workspace::Delete
       end
     end
   end
