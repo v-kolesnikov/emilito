@@ -4,16 +4,17 @@ ruby '2.3.1'
 
 gem 'rails', '~> 5.0.0'
 
-# ===== Infrastructure =====
+# === Infrastructure ===
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 
 gem 'dotenv-rails'
 gem 'rollbar'
 
-# ===== Web architecture =====
+# === Web architecture ===
+gem 'bcrypt'
 gem 'doorkeeper'
-gem 'dry-matcher'
+gem 'dry-matcher', '0.5'
 gem 'dry-types'
 gem 'dry-validation'
 gem 'reform'
@@ -24,7 +25,7 @@ gem 'trailblazer-cells'
 gem 'trailblazer-endpoint', git: 'https://github.com/trailblazer/trailblazer-endpoint.git'
 gem 'trailblazer-rails'
 
-# ===== Frontend =====
+# === Frontend ===
 gem 'bootstrap', '4.0.0.alpha4'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
@@ -39,16 +40,13 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
-# ===== Other =====
-gem 'bcrypt'
-
 group :development, :test do
   gem 'awesome_print', require: 'ap'
   gem 'pry-byebug', platform: :mri
 end
 
 group :development do
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.0'
   gem 'rubocop'
   gem 'web-console'
 end
