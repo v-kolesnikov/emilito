@@ -14,7 +14,7 @@ gem 'rollbar'
 # === Web architecture ===
 gem 'bcrypt'
 gem 'doorkeeper'
-gem 'dry-matcher'
+gem 'dry-matcher', '0.5'
 gem 'dry-types'
 gem 'dry-validation'
 gem 'reform'
@@ -46,7 +46,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'listen', '~> 3.0.5'
+  gem 'listen', '~> 3.0'
   gem 'rubocop'
   gem 'web-console'
 end
