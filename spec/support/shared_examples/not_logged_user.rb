@@ -1,4 +1,4 @@
-shared_examples 'not logged user' do
+RSpec.shared_examples 'not logged user' do
   context 'when go to /dashboard' do
     before { visit(dashboard_path) }
     it 'redirect to /sign_in' do

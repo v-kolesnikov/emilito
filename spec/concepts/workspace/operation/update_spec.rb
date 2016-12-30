@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_contexts/workspace_context'
 
-describe Workspace::Update do
+RSpec.describe Workspace::Update do
   describe '.call' do
     subject(:res) { Workspace::Update.(params) }
 

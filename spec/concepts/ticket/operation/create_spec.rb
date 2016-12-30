@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_contexts/workspace_context'
 
-describe Ticket::Create do
+RSpec.describe Ticket::Create do
   describe '.call' do
     subject(:res) { Ticket::Create.(params) }
 

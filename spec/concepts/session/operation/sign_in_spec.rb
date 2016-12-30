@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Session::SignIn do
+RSpec.describe Session::SignIn do
   describe '.call' do
     subject(:res) { Session::SignIn.(params) }
 

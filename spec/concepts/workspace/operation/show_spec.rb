@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_contexts/workspace_context'
 
-describe Workspace::Show do
+RSpec.describe Workspace::Show do
   describe '.call' do
     subject(:result) { Workspace::Show.(params) }
 

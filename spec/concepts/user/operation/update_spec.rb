@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User::Update do
+RSpec.describe User::Update do
   describe '.call' do
     subject(:res) { User::Update.(params) }
 
