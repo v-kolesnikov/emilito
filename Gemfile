@@ -14,6 +14,8 @@ gem 'rollbar'
 # === Web architecture ===
 gem 'bcrypt'
 gem 'doorkeeper'
+gem 'dry-auto_inject'
+gem 'dry-container'
 gem 'dry-matcher', '0.5'
 gem 'dry-types'
 gem 'dry-validation'
