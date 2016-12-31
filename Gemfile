@@ -13,6 +13,7 @@ gem 'rollbar'
 
 # === Web architecture ===
 gem 'bcrypt'
+gem 'colorize', require: false
 gem 'doorkeeper'
 gem 'dry-auto_inject'
 gem 'dry-container'
