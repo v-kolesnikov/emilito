@@ -12,12 +12,13 @@ class Session
 
       validation :default do
         configure do
+          config.messages = :i18n
+          config.namespace = :session
+
           def password_ok?(email, password)
             user = User.find_by(email: email)
             user && user.authenticate(password)
           end
-          config.messages_file =
-            'app/concepts/session/operation/error_messages.yml'
         end
 
         required(:email).filled(:str?)
