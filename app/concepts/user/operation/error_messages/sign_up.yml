@@ -1,9 +1,0 @@
-en:
-  errors:
-    login_unique?: "Username is already taken"
-    email_unique?: "Email already taken"
-
-ru:
-  errors:
-    login_unique?: "Имя уже используется"
-    email_unique?: "Email уже используется"

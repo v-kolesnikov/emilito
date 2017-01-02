@@ -12,6 +12,9 @@ class User
 
       validation do
         configure do
+          config.messages = :i18n
+          config.namespace = :user
+
           def login_unique?(value)
             !User.where(login: value).exists?
           end
@@ -19,9 +22,6 @@ class User
           def email_unique?(value)
             !User.where(email: value).exists?
           end
-
-          config.messages_file =
-            'app/concepts/user/operation/error_messages/sign_up.yml'
         end
 
         required(:login).filled(:str?, :login_unique?)
