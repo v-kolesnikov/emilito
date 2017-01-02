@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_contexts/ticket_context'
 
-describe Ticket::Delete do
+RSpec.describe Ticket::Delete do
   describe '.call' do
     subject(:res) { Ticket::Delete.(params) }
 

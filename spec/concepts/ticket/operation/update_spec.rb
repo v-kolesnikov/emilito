@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_contexts/ticket_context'
 
-describe Ticket::Update do
+RSpec.describe Ticket::Update do
   describe '.call' do
     subject(:res) { Ticket::Update.(params) }
 

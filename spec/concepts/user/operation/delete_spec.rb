@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User::Delete do
+RSpec.describe User::Delete do
   describe '.call' do
     subject(:res) { User::Delete.(params) }
 

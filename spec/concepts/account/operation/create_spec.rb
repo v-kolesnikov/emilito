@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Account::Create do
+RSpec.describe Account::Create do
   describe '.call' do
     subject(:res) { Account::Create.(params) }
 

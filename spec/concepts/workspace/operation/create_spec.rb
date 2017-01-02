@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_contexts/account_context'
 
-describe Workspace::Create do
+RSpec.describe Workspace::Create do
   describe '.call' do
     subject(:res) { Workspace::Create.(params) }
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe User::SignUp do
+RSpec.describe User::SignUp do
   describe '.call' do
     subject(:res) { User::SignUp.(params) }
 

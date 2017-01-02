@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'support/shared_contexts/account_context'
 
-describe Workspace::Index do
+RSpec.describe Workspace::Index do
   describe '.call' do
     subject(:result) { Workspace::Index.(params) }
 
