@@ -6,15 +6,16 @@ class WebhookDelivery
       feature Reform::Form::Dry
       include Disposable::Twin::Property::Hash
 
+      property :id, default: -> { SecureRandom.uuid }
+
       property :webhook_id
+
       property :delivered, default: -> { false }
+      property :event, virtual: true
 
       property :request, field: :hash do
-        property :headers, default: {
-          'Content-Type' => 'application/json',
-          'User-Agent' => 'Emilito-Hookshot'
-        }
-        property :payload, default: -> { '' }
+        property :headers, default: -> { {} }
+        property :payload, default: -> { {} }
       end
 
       property :response, field: :hash do
@@ -26,15 +27,10 @@ class WebhookDelivery
       validation do
         required(:webhook_id).filled
         required(:delivered).filled(:bool?)
+        required(:event).filled
         required(:request).schema do
-          required(:headers).schema do
-            required('Content-Type').filled(:str?)
-            required('User-Agent').filled(:str?)
-            optional('X-Emilito-Event').filled(:str?)
-            optional('X-Emilito-Delivery').filled(:str?)
-            optional('X-Emilito-Signature').filled(:str?)
-          end
-          required(:payload).value(:str?)
+          required(:headers).value(:hash?)
+          required(:payload).value(:hash?)
         end
       end
     end

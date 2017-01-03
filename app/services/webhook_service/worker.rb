@@ -5,7 +5,7 @@ module WebhookService
     def perform(event)
       webhooks = Webhook.subscribed(event)
       webhooks.each do |hook|
-        WebhookDelivery::Create.(webhook_delivery: { webhook_id: hook.id })
+        Webhook::Delivery.(id: hook.id, delivery: { event: event })
       end
     end
   end
