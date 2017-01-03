@@ -1,7 +1,6 @@
 class Webhook
   class Show < Emilito::Operation::Present
-    model Webhook
-
-    representer Webhook::Representer::Show
+    step Model(Webhook, :find_by)
+    representer :render, Webhook::Representer::Show
   end
 end

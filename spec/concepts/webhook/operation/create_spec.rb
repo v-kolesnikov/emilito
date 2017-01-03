@@ -1,38 +1,43 @@
 require 'rails_helper'
 require 'support/shared_contexts/workspace_context'
 
-describe Webhook::Create, type: :operation do
-  describe '.run' do
+RSpec.describe Webhook::Create do
+  describe '.call' do
     include_context 'workspace context'
 
-    let(:webhook_params) do
-      attributes_for(:webhook).merge(workspace_id: workspace.id)
+    let(:params) { {} }
+
+    subject(:result) { Webhook::Create.(params) }
+
+    it 'returns the operation result' do
+      is_asserted_by { result }
+      is_asserted_by { result['model'] }
+      is_asserted_by { result['contract.default.class'] }
+      is_asserted_by { result['representer.render.class'] }
     end
 
-    subject(:operation) { Webhook::Create.run(webhook: webhook_params).last }
-
     context 'when params is valid' do
-      it { is_expected.to be_success }
+      let(:params) do
+        { webhook: attributes_for(:webhook),
+          workspace_id: workspace.id }
+      end
 
-      describe 'model' do
-        subject(:model) { operation.model }
-        it { is_expected.to be_persisted }
+      it do
+        is_asserted_by { result.success? }
+        is_asserted_by { result['model'].persisted? }
       end
     end
 
     context 'when optional params not passed' do
-      let(:webhook_params) do
-        { name: 'web',
-          url: Faker::Internet.url,
+      let(:params) do
+        { webhook: { name: 'web', url: Faker::Internet.url },
           workspace_id: workspace.id }
       end
 
-      subject(:model) { operation.model }
-
-      it 'create a new Webhook with defaults' do
-        expect(model.name).to eq 'web'
-        expect(model.events).to eq ['create']
-        expect(model.active).to eq true
+      it 'create a new Webhook with default options' do
+        is_asserted_by { result['model'].name == 'web' }
+        is_asserted_by { result['model'].events == ['create'] }
+        is_asserted_by { result['model'].active == true }
       end
     end
   end

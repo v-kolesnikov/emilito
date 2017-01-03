@@ -1,18 +1,18 @@
 require 'rails_helper'
 require 'support/shared_contexts/workspace_context'
 
-describe Webhook::Update, type: :operation do
-  describe '.run' do
+RSpec.describe Webhook::Update do
+  describe '.call' do
     include_context 'workspace context'
 
     let(:webhook) do
       Webhook::Create.(
-        webhook: attributes_for(:webhook).merge(workspace_id: workspace.id)
-      ).model
+        webhook: attributes_for(:webhook), workspace_id: workspace.id
+      )['model']
     end
 
-    subject(:operation) do
-      Webhook::Update.run(id: webhook.id, webhook: webhook_params).last
+    subject(:result) do
+      Webhook::Update.(id: webhook.id, webhook: webhook_params)
     end
 
     context 'when params is valid' do
@@ -26,22 +26,24 @@ describe Webhook::Update, type: :operation do
       end
 
       it 'update a exists Webhook from params' do
-        is_expected.to be_success
-        expect(operation.model.persisted?).to be true
+        is_asserted_by { result.success? }
+        is_asserted_by { result['model'].persisted? }
 
-        expect(operation.model.url).to      eq webhook_params[:url]
-        expect(operation.model.name).to     eq webhook_params[:name]
+        model = result['model']
 
-        expect(operation.model.events).to   eq webhook_params[:events]
-        expect(operation.model.active).to   eq false
+        is_asserted_by { model.url  == webhook_params[:url] }
+        is_asserted_by { model.name == webhook_params[:name] }
 
-        expect(operation.model.ping_url).to eq webhook_params[:ping_url]
-        expect(operation.model.test_url).to eq webhook_params[:test_url]
+        is_asserted_by { model.events == webhook_params[:events] }
+        is_asserted_by { model.active == false }
+
+        is_asserted_by { model.ping_url == webhook_params[:ping_url] }
+        is_asserted_by { model.test_url == webhook_params[:test_url] }
       end
     end
 
     describe 'update subscribed events' do
-      subject(:events) { operation.model.events }
+      subject(:events) { result['model'].events }
 
       context 'when :add_events param is passed' do
         let(:webhook_params) do
@@ -49,7 +51,7 @@ describe Webhook::Update, type: :operation do
         end
 
         it 'add passed events to exists events' do
-          is_expected.to eq ['create', 'update']
+          is_asserted_by { events == ['create', 'update'] }
         end
       end
 
@@ -59,7 +61,7 @@ describe Webhook::Update, type: :operation do
         end
 
         it 'takes passed events from exists events' do
-          is_expected.to eq []
+          is_asserted_by { events == [] }
         end
       end
 
@@ -71,7 +73,7 @@ describe Webhook::Update, type: :operation do
         end
 
         it 'first add and then takes passed events' do
-          is_expected.to eq ['delete']
+          is_asserted_by { events == ['delete'] }
         end
       end
 
@@ -84,9 +86,9 @@ describe Webhook::Update, type: :operation do
         end
 
         it 'set :events then add :add_events and then take :remove_events' do
-          is_expected.to eq ['liked', 'delete']
+          is_asserted_by { events == ['liked', 'delete'] }
         end
       end
-    end # update events
+    end
   end
 end

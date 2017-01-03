@@ -1,5 +1,6 @@
 class Webhook
   class Delete < Emilito::Operation::Delete
-    model Webhook
+    step Model(Webhook, :find_by)
+    step :destroy!
   end
 end

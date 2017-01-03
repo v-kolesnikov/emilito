@@ -1,5 +1,7 @@
 FactoryGirl.define do
   factory :webhook do
+    skip_create
+
     workspace
 
     name 'web'
@@ -13,6 +15,10 @@ FactoryGirl.define do
 
     trait(:with_signature) do
       secret { Faker::Lorem.word }
+    end
+
+    initialize_with do
+      Webhook::Create.(webhook: attributes, workspace_id: workspace.id)['model']
     end
   end
 end

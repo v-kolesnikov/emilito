@@ -1,7 +1,5 @@
 class Webhook
   class Create < Emilito::Operation::Create
-    model Webhook, :create
-
     contract Webhook::Contract::Base do
       feature Reform::Form::Dry
 
@@ -23,12 +21,14 @@ class Webhook
       end
     end
 
-    representer Webhook::Representer::Show
+    representer :render, Webhook::Representer::Show
 
-    def process(params)
-      validate(params[:webhook]) do
-        contract.save
-      end
+    def model!(options, params:, **)
+      options['model'] = Webhook.new(params.slice(:workspace_id))
+    end
+
+    def type
+      :webhook
     end
   end
 end
