@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe WebhookService, type: :service do
+RSpec.describe WebhookService, type: :service do
   describe WebhookService::Monitor do
     describe '.on_event' do
       before { PubSubService::Observer.process_event(:update) }

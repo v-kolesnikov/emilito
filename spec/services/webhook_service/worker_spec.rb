@@ -1,15 +1,10 @@
 require 'rails_helper'
 require 'support/shared_contexts/workspace_context'
 
-describe WebhookService::Worker do
+RSpec.describe WebhookService::Worker do
   include_context 'workspace context'
 
-  let(:webhook) do
-    Webhook::Create.(
-      webhook: attributes_for(:webhook)
-      .merge(workspace_id: workspace.id)
-    ).model
-  end
+  let(:webhook) { create(:webhook, workspace: workspace) }
 
   let(:worker) { WebhookService::Worker.new }
 

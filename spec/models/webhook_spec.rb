@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Webhook do
+RSpec.describe Webhook do
   describe '.subscribed' do
     subject(:subscribed) { Webhook.subscribed(events) }
 

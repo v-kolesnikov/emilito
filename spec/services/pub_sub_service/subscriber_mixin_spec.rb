@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PubSubService::SubscriberMixin do
+RSpec.describe PubSubService::SubscriberMixin do
   subject(:subscriber_class) do
     Class.new do
       include PubSubService::SubscriberMixin

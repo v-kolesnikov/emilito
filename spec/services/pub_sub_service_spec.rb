@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe PubSubService, type: :service do
+RSpec.describe PubSubService, type: :service do
   let(:publisher) do
     Class.new do
       include PubSubService::PublisherMixin
