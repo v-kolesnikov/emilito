@@ -5,11 +5,7 @@ RSpec.describe WebhookService, type: :service do
     describe '.on_event' do
       before { PubSubService::Observer.process_event(:update) }
 
-      let(:jobs) { WebhookService::Worker.jobs }
-
-      it 'enque background job' do
-        expect(jobs.count).to eq 1
-      end
+      it_is_asserted_by { WebhookService::Worker.jobs.count == 1 }
     end
   end
 end

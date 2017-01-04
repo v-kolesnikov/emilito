@@ -12,33 +12,20 @@ RSpec.describe PubSubService, type: :service do
       Class.new do
         include PubSubService::SubscriberMixin
 
-        @events = []
-        @last_event = nil
+        @recieved_events = []
 
-        def self.on_event(event)
-          @events << @last_event = event
-        end
-
-        def self.recieved_events
-          @events
+        class << self
+          attr_reader :recieved_events
+          def on_event(event)
+            @recieved_events << event
+          end
         end
       end
     end
 
     context 'when publisher emit :example_event' do
       before { publisher.emit(:example_event) }
-
-      it { is_expected.to be_receive_msg(:example_event) }
+      it_is_asserted_by { subscriber.recieved_events == [:example_event] }
     end
-  end
-end
-
-RSpec::Matchers.define :be_receive_msg do |expected|
-  match do |actual|
-    actual.recieved_events.last == expected
-  end
-
-  failure_message do
-    "not receive message: #{expected}"
   end
 end
