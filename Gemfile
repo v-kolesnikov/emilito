@@ -43,6 +43,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
 
+group :production do
+  gem 'unicorn'
+end
+
 group :development, :test do
   gem 'awesome_print', require: 'ap'
   gem 'pry-byebug', platform: :mri
